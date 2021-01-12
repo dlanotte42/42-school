@@ -1,21 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test_main.c                                        :+:      :+:    :+:   */
+/*   ft_tolower.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dlanotte <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/11 16:42:41 by dlanotte          #+#    #+#             */
-/*   Updated: 2021/01/11 19:20:05 by dlanotte         ###   ########.fr       */
+/*   Created: 2021/01/12 00:52:20 by dlanotte          #+#    #+#             */
+/*   Updated: 2021/01/12 01:53:41 by dlanotte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_libft/libft.h"
-#include <stdio.h>
+#include "libft.h"
 
-int		main(void)
+int		ft_tolower(int c)
 {
-	char c = 'Z';
-	printf("%c", ft_toupper(c));
-	return (0);
+	if (c >= 'A' && c <= 'Z')
+		return (c + 32);
+	return (c);
 }
