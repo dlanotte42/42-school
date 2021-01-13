@@ -6,7 +6,7 @@
 #    By: dlanotte <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/11 14:31:24 by dlanotte          #+#    #+#              #
-#    Updated: 2021/01/12 17:41:50 by dlanotte         ###   ########.fr        #
+#    Updated: 2021/01/13 17:47:33 by dlanotte         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,6 +28,8 @@ SRC = ft_bzero.c \
 	  ft_strlen.c \
 	  ft_tolower.c \
 	  ft_toupper.c \
+	  ft_memmove.c \
+	  ft_memcmp.c
 
 OBJ = $(SRC:.c=.o)
 
@@ -37,3 +39,5 @@ $(NAME): $(OBJ)
 	ar rc $(NAME) $(OBJ)
 	ranlib $(NAME)
 
+clean: 
+	rm -f $(OBJ)

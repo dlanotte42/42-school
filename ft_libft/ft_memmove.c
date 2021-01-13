@@ -1,21 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test_main.c                                        :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dlanotte <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/11 16:42:41 by dlanotte          #+#    #+#             */
-/*   Updated: 2021/01/13 11:58:16 by dlanotte         ###   ########.fr       */
+/*   Created: 2021/01/12 18:53:02 by dlanotte          #+#    #+#             */
+/*   Updated: 2021/01/13 17:38:37 by dlanotte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_libft/libft.h"
-#include <stdio.h>
+#include "libft.h"
 
-int		main(void)
+void	*ft_memmove(void *dst, const void *src, size_t len)
 {
-    char dst[10];
-    char src[] = "Ciao";
-	return (0);
+	size_t		counter;
+	char		*p_src;
+	char		*p_dst;
+
+	counter = 0;
+	p_src = (char *) src;
+	p_dst = (char *)dst;
+	if (dst > src)
+	{
+		while (len)
+		{
+			len--;
+			*(p_dst + len) = *(p_src + len);
+		}
+	}
+	else
+	{
+		while (counter != len)
+		{
+			*(p_dst + counter) = *(p_src + counter);
+			counter++;
+		}
+	}
+	return (dst);
 }

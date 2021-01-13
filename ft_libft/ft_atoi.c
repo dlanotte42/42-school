@@ -1,21 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test_main.c                                        :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dlanotte <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/11 16:42:41 by dlanotte          #+#    #+#             */
-/*   Updated: 2021/01/13 11:58:16 by dlanotte         ###   ########.fr       */
+/*   Created: 2021/01/13 12:03:16 by dlanotte          #+#    #+#             */
+/*   Updated: 2021/01/13 12:15:18 by dlanotte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_libft/libft.h"
-#include <stdio.h>
+#include "libft.h"
 
-int		main(void)
+int		ft_atoi(const char *str)
 {
-    char dst[10];
-    char src[] = "Ciao";
-	return (0);
+	int numb;
+	int reverse[50];
+	int counter;
+
+	counter = 0;
+	numb = 0;
+	while (ft_isdigit(*(str + counter)))
+	{
+		
+	}
+	
+	return (numb);
 }
