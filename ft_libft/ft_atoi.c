@@ -14,16 +14,22 @@
 
 int		ft_atoi(const char *str)
 {
-	int numb;
-	int reverse[50];
-	int counter;
+	int is_negative;
+	int result;
 
-	counter = 0;
-	numb = 0;
-	while (ft_isdigit(*(str + counter)))
+	result = 0;
+	is_negative = 1;
+	while (*str && (*str == ' ' || *str == '\n' || *str == '\t' ||
+			*str == '\v' || *str == '\f' || *str == '\r'))
+		str++;
+	if (*str == '-')
+		is_negative = -1;
+	if (*str == '+' || *str == '-')
+		str++;
+	while (*str && ft_isdigit(*str))
 	{
-		
+		result = result * 10 + (*str - 48);
+		str++;
 	}
-	
-	return (numb);
+	return (result * is_negative);
 }
