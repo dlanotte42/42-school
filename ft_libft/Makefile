@@ -6,7 +6,7 @@
 #    By: dlanotte <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/11 14:31:24 by dlanotte          #+#    #+#              #
-#    Updated: 2021/01/13 19:56:27 by dlanotte         ###   ########.fr        #
+#    Updated: 2021/01/14 19:35:04 by dlanotte         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,6 +32,10 @@ SRC = ft_bzero.c \
 	  ft_memcmp.c \
 	  ft_strchr.c \
 	  ft_strrchr.c \
+	  ft_atoi.c \
+	  ft_strncmp.c \
+	  ft_strnstr.c \
+	  ft_strrchr.c
 
 OBJ = $(SRC:.c=.o)
 
