@@ -6,7 +6,7 @@
 /*   By: dlanotte <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/12 18:53:02 by dlanotte          #+#    #+#             */
-/*   Updated: 2021/01/15 16:54:56 by dlanotte         ###   ########.fr       */
+/*   Updated: 2021/01/15 19:47:47 by dlanotte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,8 @@ void	*ft_memmove(void *dst, const void *src, size_t len)
 	p_dst = (char *)dst;
 	if (src < dst)
 	{
-		while (len)
+		while (len--)
 		{
-			len--;
 			*(p_dst + len) = *(p_src + len);
 		}
 	}

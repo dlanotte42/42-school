@@ -6,7 +6,7 @@
 /*   By: dlanotte <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/15 17:16:13 by dlanotte          #+#    #+#             */
-/*   Updated: 2021/01/15 17:21:20 by dlanotte         ###   ########.fr       */
+/*   Updated: 2021/01/15 19:47:16 by dlanotte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,4 +22,3 @@ void	*ft_calloc(size_t count, size_t size)
 		ft_memset(home, 0, (count * size));
 	return (home);
 }
-
