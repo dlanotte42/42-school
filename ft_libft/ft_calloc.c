@@ -1,35 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dlanotte <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/13 12:03:16 by dlanotte          #+#    #+#             */
-/*   Updated: 2021/01/15 19:42:21 by dlanotte         ###   ########.fr       */
+/*   Created: 2021/01/15 17:16:13 by dlanotte          #+#    #+#             */
+/*   Updated: 2021/01/15 17:21:20 by dlanotte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdlib.h>
 
-int		ft_atoi(const char *str)
+void	*ft_calloc(size_t count, size_t size)
 {
-	int is_negative;
-	int  result;
+	void	*home;
 
-	result = 0;
-	is_negative = 1;
-	while (*str && (*str == ' ' || *str == '\n' || *str == '\t' ||
-			*str == '\v' || *str == '\f' || *str == '\r'))
-		str++;
-	if (*str == '-')
-		is_negative = -1;
-	if (*str == '+' || *str == '-')
-		str++;
-	while (*str && ft_isdigit(*str))
-	{
-		result = result * 10 + (*str - 48);
-		str++;
-	}
-	return (result * is_negative);
+	home = malloc(count * size);
+	if (home)
+		ft_memset(home, 0, (count * size));
+	return (home);
 }
+

@@ -1,35 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dlanotte <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/13 12:03:16 by dlanotte          #+#    #+#             */
-/*   Updated: 2021/01/15 19:42:21 by dlanotte         ###   ########.fr       */
+/*   Created: 2021/01/15 18:55:25 by dlanotte          #+#    #+#             */
+/*   Updated: 2021/01/15 19:39:14 by dlanotte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdlib.h>
 
-int		ft_atoi(const char *str)
+char	*ft_strdup(char *src)
 {
-	int is_negative;
-	int  result;
+	char	*new_src;
+	size_t	size;
+	size_t i;
 
-	result = 0;
-	is_negative = 1;
-	while (*str && (*str == ' ' || *str == '\n' || *str == '\t' ||
-			*str == '\v' || *str == '\f' || *str == '\r'))
-		str++;
-	if (*str == '-')
-		is_negative = -1;
-	if (*str == '+' || *str == '-')
-		str++;
-	while (*str && ft_isdigit(*str))
+	size = ft_strlen(src);
+	new_src = malloc((size+1) * sizeof(char));
+	if (!new_src)
+		return (NULL);
+	i = 0;
+	while(src[i])
 	{
-		result = result * 10 + (*str - 48);
-		str++;
+		new_src[i] = src[i];
+		i++;
 	}
-	return (result * is_negative);
+	new_src[i] = '\0';
+	return(new_src);
 }
