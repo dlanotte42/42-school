@@ -6,7 +6,7 @@
 /*   By: dlanotte <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/13 12:03:16 by dlanotte          #+#    #+#             */
-/*   Updated: 2021/01/13 12:15:18 by dlanotte         ###   ########.fr       */
+/*   Updated: 2021/01/15 17:08:14 by dlanotte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int		ft_atoi(const char *str)
 {
 	int is_negative;
-	int result;
+	int  result;
 
 	result = 0;
 	is_negative = 1;

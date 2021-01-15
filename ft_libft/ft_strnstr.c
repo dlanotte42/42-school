@@ -6,7 +6,7 @@
 /*   By: dlanotte <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/14 18:56:20 by dlanotte          #+#    #+#             */
-/*   Updated: 2021/01/14 19:03:52 by dlanotte         ###   ########.fr       */
+/*   Updated: 2021/01/15 17:05:52 by dlanotte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,26 @@
 
 char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 {
-	size_t i;
+	size_t	h_len;
+	size_t	n_len;
+	size_t	tmph_len;
 
-	i = 0;
-	if (needle == NULL || ft_strlen(needle) == 0)
+	h_len = 0;
+	if (needle[h_len] == '\0')
 		return ((char *)haystack);
-	if (ft_strlen(needle) > len)
-		return (NULL);
-	while (i < len)
+	while (haystack[h_len] && h_len < len)
 	{
-		if (ft_strncmp((char *)&haystack[i], needle, ft_strlen(needle)) == 0)
+		n_len = 0;
+		tmph_len = h_len;
+		while (haystack[h_len] == needle[n_len] && h_len < len)
 		{
-			if (i + ft_strlen(needle) > len)
-				return (NULL);
-			return ((char *)&haystack[i]);
+			h_len++;
+			n_len++;
+			if (needle[n_len] == '\0')
+				return ((char *)&haystack[tmph_len]);
 		}
-		i++;
+		h_len = tmph_len;
+		h_len++;
 	}
 	return (NULL);
 }
