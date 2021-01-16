@@ -6,7 +6,7 @@
 /*   By: dlanotte <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/12 17:08:28 by dlanotte          #+#    #+#             */
-/*   Updated: 2021/01/15 17:21:59 by dlanotte         ###   ########.fr       */
+/*   Updated: 2021/01/16 13:03:01 by dlanotte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ void		*ft_calloc(size_t count, size_t size);
 char		*ft_strrchr(const char *s, int c);
 char		*ft_strchr(const char *s, int c);
 char		*ft_strnstr(const char *haystack, const char *needle, size_t len);
+char		*ft_strjoin(const char *s1, const char *s2);
 int			ft_strncmp(const char *s1, const char *s2, size_t n);
 int			ft_atoi(const char *str);
 int			ft_memcmp(const void *s1, const void *s2, size_t n);
