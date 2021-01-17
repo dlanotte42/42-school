@@ -6,16 +6,16 @@
 /*   By: dlanotte <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/16 19:16:25 by dlanotte          #+#    #+#             */
-/*   Updated: 2021/01/17 12:22:22 by dlanotte         ###   ########.fr       */
+/*   Updated: 2021/01/17 19:49:02 by dlanotte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stdlib.h>
 
-int		ft_numlen(int num)
+static int		ft_numlen(int num)
 {
-	int		size;
+	int			size;
 
 	size = 0;
 	while (num > 9)
@@ -27,49 +27,49 @@ int		ft_numlen(int num)
 	return (size);
 }
 
-char	*ft_fill_table(char *numb_converted, int size, int num, int is_negative)
+static char		*ft_fill_table(char *n_con, int size, int num, int is_n)
 {
-	numb_converted[size] = '\0';
+	n_con[size] = '\0';
 	while (size)
 	{
-		if (is_negative > 1)
+		if (is_n > 1)
 		{
-			numb_converted[size - 1] = (((num % 10) + 1) + 48);
-			is_negative = 1;
+			n_con[size - 1] = (((num % 10) + 1) + 48);
+			is_n = 1;
 		}
 		else
-			numb_converted[size - 1] = (num % 10) + 48;
+			n_con[size - 1] = (num % 10) + 48;
 		num = num / 10;
 		size--;
 	}
-	return (numb_converted);
+	return (n_con);
 }
 
-char	*ft_itoa(int num)
+char			*ft_itoa(int num)
 {
 	int			size;
-	int			is_negative;
-	char		*numb_converted;
+	int			is_n;
+	char		*n_con;
 
-	is_negative = 0;
+	is_n = 0;
 	if (num == -2147483648)
 	{
-		is_negative = 2;
+		is_n = 2;
 		num++;
 		num = num * -1;
 	}
 	else if (num < 0)
 	{
-		is_negative++;
+		is_n++;
 		num = num * -1;
 	}
 	size = ft_numlen(num);
-	if (is_negative)
+	if (is_n)
 		size++;
-	if (!(numb_converted = malloc(sizeof(char) * size + 1)))
+	if (!(n_con = malloc(sizeof(char) * size + 1)))
 		return (NULL);
-	ft_fill_table(numb_converted, size, num, is_negative);
-	if (is_negative)
-		numb_converted[0] = '-';
-	return (numb_converted);
+	ft_fill_table(n_con, size, num, is_n);
+	if (is_n)
+		n_con[0] = '-';
+	return (n_con);
 }

@@ -6,14 +6,14 @@
 /*   By: dlanotte <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/17 17:11:27 by dlanotte          #+#    #+#             */
-/*   Updated: 2021/01/17 19:16:13 by dlanotte         ###   ########.fr       */
+/*   Updated: 2021/01/17 19:53:55 by dlanotte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stdlib.h>
 
-const char	*ft_fill(const char *s, char c, char **word_matrix, int i)
+static const char	*ft_fill(const char *s, char c, char **word_matrix, int i)
 {
 	int			j;
 
@@ -30,7 +30,7 @@ const char	*ft_fill(const char *s, char c, char **word_matrix, int i)
 	return (s);
 }
 
-int			ft_count_word(const char *s_fake, char **word_matrix, char c, int i)
+static int			ft_c_c(const char *s_fake, char **w_mat, char c, int i)
 {
 	int			c_counter;
 
@@ -40,12 +40,12 @@ int			ft_count_word(const char *s_fake, char **word_matrix, char c, int i)
 		s_fake++;
 		c_counter++;
 	}
-	if (!(word_matrix[i] = malloc(sizeof(char) * (c_counter + 1))))
+	if (!(w_mat[i] = malloc(sizeof(char) * (c_counter + 1))))
 		return ((int)NULL);
 	return (c_counter);
 }
 
-char		**ft_allocate(const char *s, char c, char **word_matrix, int word)
+static char			**ft_alloc(const char *s, char c, char **w_mat, int word)
 {
 	const char	*s_fake;
 	int			i;
@@ -57,18 +57,18 @@ char		**ft_allocate(const char *s, char c, char **word_matrix, int word)
 	s_fake = s;
 	while (i < word)
 	{
-		c_counter = ft_count_word(s_fake, word_matrix, c, i);
+		c_counter = ft_c_c(s_fake, w_mat, c, i);
 		j = 0;
-		s = ft_fill(s, c, word_matrix, i);
+		s = ft_fill(s, c, w_mat, i);
 		s_fake = s;
 		while (*s_fake == c && *s_fake)
 			s_fake++;
 		i++;
 	}
-	return (word_matrix);
+	return (w_mat);
 }
 
-char		**ft_split(char const *s, char c)
+char				**ft_split(char const *s, char c)
 {
 	char		**word_matrix;
 	int			word;
@@ -92,7 +92,7 @@ char		**ft_split(char const *s, char c)
 		s++;
 	if (!(word_matrix = malloc(sizeof(char *) * numb_word + 1)))
 		return (NULL);
-	word_matrix = ft_allocate(s, c, word_matrix, numb_word);
+	word_matrix = ft_alloc(s, c, word_matrix, numb_word);
 	word_matrix[numb_word] = NULL;
 	return (word_matrix);
 }

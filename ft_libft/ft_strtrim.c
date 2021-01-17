@@ -6,14 +6,14 @@
 /*   By: dlanotte <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/16 16:41:26 by dlanotte          #+#    #+#             */
-/*   Updated: 2021/01/16 17:33:06 by dlanotte         ###   ########.fr       */
+/*   Updated: 2021/01/17 19:55:19 by dlanotte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stdlib.h>
 
-int		check(const char check, const char *set)
+static int		check(const char check, const char *set)
 {
 	const char	*p_s;
 
@@ -27,7 +27,7 @@ int		check(const char check, const char *set)
 	return (0);
 }
 
-size_t	ft_start_world_count(char const *s1, const char *set)
+static size_t	ft_start_world_count(char const *s1, const char *set)
 {
 	size_t		start_word_counter;
 	size_t		i;
@@ -44,7 +44,7 @@ size_t	ft_start_world_count(char const *s1, const char *set)
 	return (start_word_counter);
 }
 
-size_t	ft_end_word_counter(char const *s1, const char *set, size_t start)
+static size_t	ft_end_word_count(char const *s1, const char *set, size_t start)
 {
 	size_t		len;
 	size_t		end_word_counter;
@@ -61,7 +61,7 @@ size_t	ft_end_word_counter(char const *s1, const char *set, size_t start)
 	return (end_word_counter);
 }
 
-char	*ft_strtrim(const char *s1, char const *set)
+char			*ft_strtrim(const char *s1, char const *set)
 {
 	size_t		i;
 	size_t		k;
@@ -73,7 +73,7 @@ char	*ft_strtrim(const char *s1, char const *set)
 		return (NULL);
 	k = 0;
 	start_word_counter = ft_start_world_count(s1, set);
-	end_word_counter = ft_end_word_counter(s1, set, start_word_counter);
+	end_word_counter = ft_end_word_count(s1, set, start_word_counter);
 	i = start_word_counter + end_word_counter;
 	new_str = malloc(sizeof(char) * (ft_strlen(s1) - i) + 1);
 	if (!new_str)
