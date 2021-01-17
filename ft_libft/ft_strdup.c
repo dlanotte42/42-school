@@ -6,14 +6,14 @@
 /*   By: dlanotte <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/15 18:55:25 by dlanotte          #+#    #+#             */
-/*   Updated: 2021/01/15 19:49:38 by dlanotte         ###   ########.fr       */
+/*   Updated: 2021/01/17 13:00:40 by dlanotte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stdlib.h>
 
-char	*ft_strdup(char *src)
+char	*ft_strdup(const char *src)
 {
 	char	*new_src;
 	size_t	size;

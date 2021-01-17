@@ -6,7 +6,7 @@
 /*   By: dlanotte <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/13 12:03:16 by dlanotte          #+#    #+#             */
-/*   Updated: 2021/01/16 18:15:38 by dlanotte         ###   ########.fr       */
+/*   Updated: 2021/01/17 12:34:34 by dlanotte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 int		ft_atoi(const char *str)
 {
-	int		is_negative;
-	int		result;
+	int						is_negative;
+	unsigned long long		result;
 
 	result = 0;
 	is_negative = 1;
@@ -29,7 +29,9 @@ int		ft_atoi(const char *str)
 	while (*str && ft_isdigit(*str))
 	{
 		result = result * 10 + (*str - 48);
+		if (result >= 9223372036854775808ULL)
+			return (is_negative == 1 ? -1 : 0);
 		str++;
 	}
-	return (result * is_negative);
+	return ((int)result * is_negative);
 }
