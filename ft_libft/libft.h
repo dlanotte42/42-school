@@ -6,7 +6,7 @@
 /*   By: dlanotte <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/12 17:08:28 by dlanotte          #+#    #+#             */
-/*   Updated: 2021/01/17 17:35:13 by dlanotte         ###   ########.fr       */
+/*   Updated: 2021/01/17 19:37:56 by dlanotte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,11 @@
 
 # include <string.h>
 
+void		ft_putnbr_fd(int nbr, int fd);
+void		ft_putendl_fd(char const *s, int fd);
+void		ft_putstr_fd(char const *s, int fd);
 void		*ft_memset(void *str, int c, size_t n);
+void		ft_putchar_fd(char c, int fd);
 void		ft_bzero(void *s, size_t n);
 void		*ft_memcpy(void *dest, const void *src, size_t n);
 void		*ft_memchr(const void *s, int c, size_t n);
