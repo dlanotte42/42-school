@@ -6,7 +6,7 @@
 /*   By: dlanotte <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/12 17:08:28 by dlanotte          #+#    #+#             */
-/*   Updated: 2021/01/17 13:02:43 by dlanotte         ###   ########.fr       */
+/*   Updated: 2021/01/17 17:35:13 by dlanotte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ char		*ft_strjoin(const char *s1, const char *s2);
 char		*ft_itoa(int num);
 char		*ft_strtrim(const char *s1, char const *set);
 char		*ft_substr(char const *str, unsigned int start, size_t len);
+char		**ft_split(char const *s, char c);
 int			ft_strncmp(const char *s1, const char *s2, size_t n);
 int			ft_atoi(const char *str);
 int			ft_memcmp(const void *s1, const void *s2, size_t n);
