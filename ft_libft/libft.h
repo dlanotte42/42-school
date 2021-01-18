@@ -6,7 +6,7 @@
 /*   By: dlanotte <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/12 17:08:28 by dlanotte          #+#    #+#             */
-/*   Updated: 2021/01/17 19:37:56 by dlanotte         ###   ########.fr       */
+/*   Updated: 2021/01/18 17:40:52 by dlanotte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ void		*ft_memccpy(void *dst, const void *src, int c, size_t n);
 void		*ft_memmove(void *dst, const void *src, size_t len);
 void		*ft_calloc(size_t count, size_t size);
 char		*ft_strdup(const char *src);
+char		*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 char		*ft_strrchr(const char *s, int c);
 char		*ft_strchr(const char *s, int c);
 char		*ft_strnstr(const char *haystack, const char *needle, size_t len);

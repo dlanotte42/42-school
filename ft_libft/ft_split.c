@@ -6,7 +6,7 @@
 /*   By: dlanotte <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/17 17:11:27 by dlanotte          #+#    #+#             */
-/*   Updated: 2021/01/17 19:53:55 by dlanotte         ###   ########.fr       */
+/*   Updated: 2021/01/18 16:10:01 by dlanotte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,17 +71,16 @@ static char			**ft_alloc(const char *s, char c, char **w_mat, int word)
 char				**ft_split(char const *s, char c)
 {
 	char		**word_matrix;
-	int			word;
 	const char	*p_s;
 	int			numb_word;
 
-	word = 0;
+	numb_word = 0;
 	if (!s)
 		return (NULL);
 	if (*s != c)
-		word = 1;
+		numb_word = 1;
 	p_s = s;
-	numb_word = word;
+	p_s++;
 	while (*p_s)
 	{
 		if (*p_s != c && *(p_s - 1) == c)
@@ -90,7 +89,7 @@ char				**ft_split(char const *s, char c)
 	}
 	while (*s == c && *s)
 		s++;
-	if (!(word_matrix = malloc(sizeof(char *) * numb_word + 1)))
+	if (!(word_matrix = malloc(sizeof(char *) * (numb_word + 1))))
 		return (NULL);
 	word_matrix = ft_alloc(s, c, word_matrix, numb_word);
 	word_matrix[numb_word] = NULL;
