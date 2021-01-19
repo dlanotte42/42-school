@@ -6,92 +6,96 @@
 /*   By: dlanotte <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/17 17:11:27 by dlanotte          #+#    #+#             */
-/*   Updated: 2021/01/18 16:10:01 by dlanotte         ###   ########.fr       */
+/*   Updated: 2021/01/19 16:06:15 by dlanotte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stdlib.h>
 
-static const char	*ft_fill(const char *s, char c, char **word_matrix, int i)
+static char		**occurences(char const *s, char c, size_t *size)
 {
-	int			j;
+	char	*pt;
+	int		flag;
 
-	j = 0;
-	while (*s && *s != c)
+	*size = 1;
+	pt = (char *)s;
+	flag = 1;
+	while (*pt)
 	{
-		word_matrix[i][j] = *s;
-		s++;
-		j++;
+		if (*pt != c && flag)
+		{
+			(*size)++;
+			flag = 0;
+		}
+		else if (*pt == c && !flag)
+		{
+			flag = 1;
+		}
+		pt++;
 	}
-	word_matrix[i][j] = '\0';
-	while (*s == c && *s)
-		s++;
-	return (s);
+	return ((char**)malloc((*size) * sizeof(char *)));
 }
 
-static int			ft_c_c(const char *s_fake, char **w_mat, char c, int i)
+static	char	*ft_copy(const char *src, size_t length)
 {
-	int			c_counter;
+	size_t	i;
+	char	*dst;
 
-	c_counter = 0;
-	while (*s_fake != c && *s_fake)
-	{
-		s_fake++;
-		c_counter++;
-	}
-	if (!(w_mat[i] = malloc(sizeof(char) * (c_counter + 1))))
-		return ((int)NULL);
-	return (c_counter);
-}
-
-static char			**ft_alloc(const char *s, char c, char **w_mat, int word)
-{
-	const char	*s_fake;
-	int			i;
-	int			j;
-	int			c_counter;
-
-	j = 0;
 	i = 0;
-	s_fake = s;
-	while (i < word)
+	if ((dst = (char*)malloc((length + 1) * sizeof(char))))
 	{
-		c_counter = ft_c_c(s_fake, w_mat, c, i);
-		j = 0;
-		s = ft_fill(s, c, w_mat, i);
-		s_fake = s;
-		while (*s_fake == c && *s_fake)
-			s_fake++;
-		i++;
+		while (i < length)
+		{
+			dst[i] = src[i];
+			i++;
+		}
+		dst[length] = '\0';
+		return (dst);
 	}
-	return (w_mat);
+	return (NULL);
 }
 
-char				**ft_split(char const *s, char c)
+static	void	fill(char **array, char const *s, char c, size_t size)
 {
-	char		**word_matrix;
-	const char	*p_s;
-	int			numb_word;
+	size_t	length;
+	int		flag;
+	int		i;
+	char	*pt;
 
-	numb_word = 0;
+	i = 0;
+	pt = (char *)s;
+	flag = 1;
+	length = 0;
+	while (*pt)
+	{
+		if (*pt != c && flag)
+			flag = 0;
+		else if (*pt == c && !flag)
+		{
+			flag = 1;
+			array[i] = ft_copy(pt - length, length);
+			length = 0;
+			i++;
+		}
+		length += (*pt != c);
+		pt++;
+	}
+	if (length)
+		array[size - 2] = ft_copy(pt - length, length);
+}
+
+char			**ft_split(char const *s, char c)
+{
+	char	**array;
+	size_t	size;
+
 	if (!s)
 		return (NULL);
-	if (*s != c)
-		numb_word = 1;
-	p_s = s;
-	p_s++;
-	while (*p_s)
-	{
-		if (*p_s != c && *(p_s - 1) == c)
-			numb_word++;
-		p_s++;
-	}
-	while (*s == c && *s)
-		s++;
-	if (!(word_matrix = malloc(sizeof(char *) * (numb_word + 1))))
+	array = occurences(s, c, &size);
+	if (!array)
 		return (NULL);
-	word_matrix = ft_alloc(s, c, word_matrix, numb_word);
-	word_matrix[numb_word] = NULL;
-	return (word_matrix);
+	fill(array, s, c, size);
+	array[size - 1] = NULL;
+	return (array);
 }
