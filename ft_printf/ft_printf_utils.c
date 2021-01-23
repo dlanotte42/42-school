@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dlanotte <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: dlanotte <dlanotte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/22 16:35:28 by dlanotte          #+#    #+#             */
-/*   Updated: 2021/01/22 16:35:29 by dlanotte         ###   ########.fr       */
+/*   Updated: 2021/01/23 17:40:14 by dlanotte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	ft_putstr(char *str)
 	}
 }
 
-int		ft_numlen(int num)
+int		ft_numlen(unsigned int num)
 {
 	int			size;
 
@@ -58,10 +58,11 @@ int		ft_calc_percent(char *str)
 
 	i = 0;
 	remove = 0;
-	while (str[i++])
+	while (str[i])
 	{
-		if (str[i] == '%')
+		if (str[i] == '%' && ft_isalnum((int)str[i + 1]))
 			remove += 2;
+		i++;
 	}
 	return (remove);
 }
