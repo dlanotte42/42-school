@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf_type.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dlanotte <dlanotte@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dlanotte <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/22 17:49:41 by dlanotte          #+#    #+#             */
-/*   Updated: 2021/01/23 17:56:25 by dlanotte         ###   ########.fr       */
+/*   Created: 2021/01/23 17:56:25 by dlanotte          #+#    #+#             */
+/*   Updated: 2021/01/23 18:26:49 by dlanotte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 int		ft_iprintf(int numb)
 {
-	int size;
-	char *number;
-	
+	int		size;
+	char	*number;
+
 	number = ft_itoa(numb);
 	ft_putstr(number);
 	size = ft_strlen(number);
@@ -25,11 +25,11 @@ int		ft_iprintf(int numb)
 
 int		ft_sprintf(char *str)
 {
-	int size;
+	int		size;
 
 	size = ft_strlen(str);
 	ft_putstr(str);
-	return(size);
+	return (size);
 }
 
 int		ft_cprintf(char letter)
@@ -40,9 +40,9 @@ int		ft_cprintf(char letter)
 
 int		ft_uprintf(unsigned int numb)
 {
-	int size;
-	char *number;
-	
+	int		size;
+	char	*number;
+
 	number = ft_unsigned_itoa(numb);
 	ft_putstr(number);
 	size = ft_strlen(number);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf_libft.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dlanotte <dlanotte@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dlanotte <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/22 18:30:29 by dlanotte          #+#    #+#             */
-/*   Updated: 2021/01/23 17:40:15 by dlanotte         ###   ########.fr       */
+/*   Created: 2021/01/23 18:17:53 by dlanotte          #+#    #+#             */
+/*   Updated: 2021/01/23 18:23:40 by dlanotte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,20 +60,20 @@ char			*ft_itoa(int num)
 	return (n_con);
 }
 
-char            *ft_unsigned_itoa(unsigned int num)
+char			*ft_unsigned_itoa(unsigned int num)
 {
-    int			size;
-    char		*n_con;
+	int			size;
+	char		*n_con;
 
-    size = ft_numlen(num);
-    if (!(n_con = malloc(sizeof(char) * size + 1)))
-        return (NULL);
-        n_con[size] = '\0';
-    while (size)
-    {
-        n_con[size - 1] = (num % 10) + 48;
-        num = num / 10;
-        size--;
-    }
-    return (n_con);
+	size = ft_numlen(num);
+	if (!(n_con = malloc(sizeof(char) * size + 1)))
+		return (NULL);
+	n_con[size] = '\0';
+	while (size)
+	{
+		n_con[size - 1] = (num % 10) + 48;
+		num = num / 10;
+		size--;
+	}
+	return (n_con);
 }
