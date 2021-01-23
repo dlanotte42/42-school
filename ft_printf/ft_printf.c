@@ -6,7 +6,7 @@
 /*   By: dlanotte <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/23 18:04:27 by dlanotte          #+#    #+#             */
-/*   Updated: 2021/01/23 18:24:05 by dlanotte         ###   ########.fr       */
+/*   Updated: 2021/01/23 18:38:35 by dlanotte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ int		ft_printf(const char *str, ...)
 
 	i = 0;
 	add = 0;
+	remove = 0;
 	va_start(variables, str);
 	while (str[i])
 	{
@@ -34,6 +35,11 @@ int		ft_printf(const char *str, ...)
 			add = add + ft_cprintf(va_arg(variables, int));
 		else if (str[i] == '%'&& (str[i + 1] == 'u'))
 			add = add + ft_uprintf(va_arg(variables, unsigned int));
+		else if (str[i] == '%' && str[i + 1] == '%')
+			{
+				add++;
+				remove += 2;
+			}
 		else
 			ft_putchar(str[i]);
 
@@ -63,12 +69,15 @@ int	main(void)
 
 	//lett_p = &Lettera;
 
+	//ft_printf("%%");
+
+
 	//ft_printf("MY PRINTF: %d\n", ft_printf("unsigned int: %u\n", int_u));
 
-	ft_printf("NUM: %d\n", ft_printf("\n||||||MY VERSION||||||\nCiao Mondo, io mi chiamo %s\n", Author));
+	ft_printf("NUM: %d\n", ft_printf("\n||||||MY VERSION||||||\nCiao Mondo, io mi chiamo %s\n(%%)", Author));
 	ft_printf("MY PRINTF: %d\n", ft_printf("ID: %c(c) Test by %s(s) %i(i) + %d(d) = %s(s) unsigned int: %u(u)\n", Lettera, Author, Numero, Numero, NumeroChar, int_u));
-
-	printf("ORI: %d\n", printf("\n||||||OR VERSION||||||\nCiao Mondo, io mi chiamo %s\n", Author));
+ 
+	printf("ORI: %d\n", printf("\n||||||OR VERSION||||||\nCiao Mondo, io mi chiamo %s\n(%%)", Author));
 	printf("OR PRINTF: %d\n\n", printf("ID: %c(c) Test by %s(s) %i(i) + %d(d) = %s(s) unsigned int: %u(u)\n", Lettera, Author, Numero, Numero, NumeroChar, int_u));
 
 	return (0);

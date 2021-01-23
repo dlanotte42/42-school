@@ -6,7 +6,7 @@
 /*   By: dlanotte <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/23 18:19:13 by dlanotte          #+#    #+#             */
-/*   Updated: 2021/01/23 18:20:46 by dlanotte         ###   ########.fr       */
+/*   Updated: 2021/01/23 18:39:49 by dlanotte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,8 @@ int		ft_calc_percent(char *str)
 	while (str[i])
 	{
 		if (str[i] == '%' && ft_isalnum((int)str[i + 1]))
+			remove += 2;
+		else if (str[i] == '%' && str[i + 1] == '%')
 			remove += 2;
 		i++;
 	}
