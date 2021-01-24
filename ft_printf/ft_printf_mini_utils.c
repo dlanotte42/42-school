@@ -6,7 +6,7 @@
 /*   By: dlanotte <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/23 18:18:03 by dlanotte          #+#    #+#             */
-/*   Updated: 2021/01/23 18:20:51 by dlanotte         ###   ########.fr       */
+/*   Updated: 2021/01/24 16:57:52 by dlanotte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,4 +25,14 @@ static	int		ft_isalpha(int c)
 int				ft_isalnum(int c)
 {
 	return (ft_isalpha(c) || ft_isdigit(c));
+}
+
+int				ft_calc_paramenter(const char *str, int i)
+{
+	while(str[i++])
+	{
+		if (ft_isalpha(str[i]))
+			return(i);
+	}
+	return (0);
 }

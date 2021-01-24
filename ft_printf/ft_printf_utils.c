@@ -6,24 +6,33 @@
 /*   By: dlanotte <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/23 18:19:13 by dlanotte          #+#    #+#             */
-/*   Updated: 2021/01/23 18:39:49 by dlanotte         ###   ########.fr       */
+/*   Updated: 2021/01/24 16:33:38 by dlanotte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_putchar(char c)
+int		ft_putchar(char c)
 {
+	int printed;
+
+	printed = 0;
+	printed++;
 	write(1, &c, 1);
+	return (printed);
 }
 
-void	ft_putstr(char *str)
+int		ft_putstr(char *str)
 {
+	int printed;
+
+	printed = 0;
 	while (*str != '\0')
 	{
-		ft_putchar(*str);
+		printed = printed + ft_putchar(*str);
 		str++;
 	}
+	return (printed);
 }
 
 int		ft_numlen(unsigned int num)
@@ -60,11 +69,14 @@ int		ft_calc_percent(char *str)
 	remove = 0;
 	while (str[i])
 	{
-		if (str[i] == '%' && ft_isalnum((int)str[i + 1]))
-			remove += 2;
+		if (str[i] == '%' && ft_calc_paramenter(str, i))
+			remove = remove + ft_calc_paramenter(str, i);
 		else if (str[i] == '%' && str[i + 1] == '%')
 			remove += 2;
 		i++;
 	}
+	i = 0;
+
+
 	return (remove);
 }

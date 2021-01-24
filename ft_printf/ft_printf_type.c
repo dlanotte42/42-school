@@ -6,7 +6,7 @@
 /*   By: dlanotte <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/23 17:56:25 by dlanotte          #+#    #+#             */
-/*   Updated: 2021/01/23 18:26:49 by dlanotte         ###   ########.fr       */
+/*   Updated: 2021/01/24 16:41:31 by dlanotte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,37 +14,38 @@
 
 int		ft_iprintf(int numb)
 {
-	int		size;
 	char	*number;
+	int		printed;
 
 	number = ft_itoa(numb);
-	ft_putstr(number);
-	size = ft_strlen(number);
-	return (size);
+	printed = ft_putstr(number);
+	return (printed);
 }
 
 int		ft_sprintf(char *str)
 {
 	int		size;
+	int		printed;
 
 	size = ft_strlen(str);
-	ft_putstr(str);
-	return (size);
+	printed = ft_putstr(str);
+	return (printed);
 }
 
 int		ft_cprintf(char letter)
 {
-	ft_putchar(letter);
-	return (1);
+	int 	printed;
+
+	printed = ft_putchar(letter);
+	return (printed);
 }
 
 int		ft_uprintf(unsigned int numb)
 {
-	int		size;
 	char	*number;
+	int		printed;
 
 	number = ft_unsigned_itoa(numb);
-	ft_putstr(number);
-	size = ft_strlen(number);
-	return (size);
+	printed = ft_putstr(number);
+	return (printed);
 }
