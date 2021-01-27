@@ -6,7 +6,7 @@
 /*   By: dlanotte <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/23 18:04:27 by dlanotte          #+#    #+#             */
-/*   Updated: 2021/01/24 17:05:53 by dlanotte         ###   ########.fr       */
+/*   Updated: 2021/01/26 18:20:09 by dlanotte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,13 @@ int		ft_printf(const char *str, ...)
 	va_start(variables, str);
 	while (str[i])
 	{
-		if (str[i] == '%'&& ((str[ft_calc_paramenter(str, i)] == 'd') || str[i + 1] == 'i'))
+		if (str[i] == '%'&& ((str[ft_calc_paramenter(str, i)] == 'd') || str[ft_calc_paramenter(str,i)] == 'i'))
 			printed = printed + ft_iprintf(va_arg(variables, int));
-		else if (str[i] == '%'&& str[i + 1] == 's')
+		else if (str[i] == '%'&& str[ft_calc_paramenter(str,i)] == 's')
 			printed = printed + ft_sprintf(va_arg(variables, char *));
-		else if (str[i] == '%'&& str[i + 1] == 'c')
+		else if (str[i] == '%'&& str[ft_calc_paramenter(str,i)] == 'c')
 			printed = printed + ft_cprintf(va_arg(variables, int));
-		else if (str[i] == '%'&& (str[i + 1] == 'u'))
+		else if (str[i] == '%'&& str[ft_calc_paramenter(str,i)] == 'u')
 			printed = printed + ft_uprintf(va_arg(variables, unsigned int));
 		else
 			printed = printed + ft_putchar(str[i]);
