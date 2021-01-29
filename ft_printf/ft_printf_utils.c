@@ -6,7 +6,7 @@
 /*   By: dlanotte <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/23 18:19:13 by dlanotte          #+#    #+#             */
-/*   Updated: 2021/01/24 16:33:38 by dlanotte         ###   ########.fr       */
+/*   Updated: 2021/01/29 17:23:27 by dlanotte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,8 @@
 
 int		ft_putchar(char c)
 {
-	int printed;
-
-	printed = 0;
-	printed++;
 	write(1, &c, 1);
-	return (printed);
+	return (1);
 }
 
 int		ft_putstr(char *str)

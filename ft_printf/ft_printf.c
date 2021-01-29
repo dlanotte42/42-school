@@ -6,7 +6,7 @@
 /*   By: dlanotte <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/23 18:04:27 by dlanotte          #+#    #+#             */
-/*   Updated: 2021/01/26 18:20:09 by dlanotte         ###   ########.fr       */
+/*   Updated: 2021/01/29 18:11:59 by dlanotte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,8 @@ int		ft_printf(const char *str, ...)
 		else if (str[i] == '%'&& str[ft_calc_paramenter(str,i)] == 'u')
 			printed = printed + ft_uprintf(va_arg(variables, unsigned int));
 		else
-			printed = printed + ft_putchar(str[i]);
-
+			if(str[i] != '%' || ((str[i]) == '%' && str[i + 1] == '%'))
+				printed = printed + ft_putchar(str[i]);
 
 		if (str[i] == '%' && ((ft_isalnum((int)str[i + 1])) || (str[i] == '%')))
 			i += 2;
@@ -42,11 +42,6 @@ int		ft_printf(const char *str, ...)
 			i++;
 	}
 	va_end(variables);
-	//size = ft_strlen((char *)str);
-	//remove = ft_calc_percent((char *)str);
-	//printf("SIZE: %d\n", size);
-	//printf("REMOVE: %d\n", remove);
-	//printf("ADD: %d\n", add);
 	return (printed);
 }
 
@@ -78,3 +73,73 @@ int	main(void)
 	}
 	return (0);
 }
+
+
+
+
+/*
+
+COPY TO ONLINE IDE
+
+#include <stdio.h>
+
+static    int        ft_isalpha(int c)
+{
+    return ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z'));
+}
+
+char *return_paramater()
+{
+  char *parameter;
+  
+  parameter = malloc();
+  
+  
+}
+
+
+
+
+
+
+int                ft_calc_paramenter(const char *str, int i)
+{
+    while(str[i++])
+    {
+      if ft_calc_flags(str[i]);
+        if (ft_isalpha(str[i]))
+            return(i);
+    }
+    return (0);
+}
+
+int ft_printf(char *str, int test)
+{
+  int i;
+
+  i = 0;
+  while (str[i])
+  {
+    if (str[i] == '%' && ((str[ft_calc_paramenter(str, i)] == 'd') || str[ft_calc_paramenter(str,i)] == 'i'))
+      printf("Trovato numero");
+    i++;
+  }
+
+
+
+
+
+  return (100);
+}
+
+int main(void)
+{
+    int ciao = 130;
+  
+    ft_printf("%10d", ciao);
+    printf("%10d", ciao);
+    
+    
+    
+    return (0);
+} */
