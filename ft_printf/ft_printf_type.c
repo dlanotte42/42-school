@@ -6,7 +6,7 @@
 /*   By: dlanotte <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/23 17:56:25 by dlanotte          #+#    #+#             */
-/*   Updated: 2021/01/24 16:41:31 by dlanotte         ###   ########.fr       */
+/*   Updated: 2021/01/30 19:27:19 by dlanotte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,14 @@ int		ft_iprintf(int numb)
 	return (printed);
 }
 
-int		ft_sprintf(char *str)
+int		ft_sprintf(char *str, char *original_string, int i)
 {
 	int		size;
 	int		printed;
+	char	flag;
 
+	while(original_string[i++] != 's')
+		flag = ft_is_flag(original_string[i]);
 	size = ft_strlen(str);
 	printed = ft_putstr(str);
 	return (printed);
