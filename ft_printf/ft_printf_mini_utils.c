@@ -6,7 +6,7 @@
 /*   By: dlanotte <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/23 18:18:03 by dlanotte          #+#    #+#             */
-/*   Updated: 2021/01/30 19:13:56 by dlanotte         ###   ########.fr       */
+/*   Updated: 2021/01/30 19:42:23 by dlanotte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,12 +86,6 @@ int   ft_calc_paramenter(const char *str, int i)
 
   while(str[i++])
   {
-    if ((parameter = ft_is_flag(str[i])))
-    {
-      ft_putstr("TROVATO PARAMETRO: " );
-      ft_putchar(parameter);
-      ft_putchar('\n');
-    }
     if (ft_is_parameter(str[i]))
         return(i);
   }
