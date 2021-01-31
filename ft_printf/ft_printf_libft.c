@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf_libft.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dlanotte <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: dlanotte <dlanotte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/23 18:17:53 by dlanotte          #+#    #+#             */
-/*   Updated: 2021/01/28 17:58:47 by dlanotte         ###   ########.fr       */
+/*   Updated: 2021/01/31 19:01:44 by dlanotte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include <stdlib.h>
+
 
 static char		*ft_fill_table(char *n_con, int size, int num, int is_n)
 {
@@ -76,4 +76,14 @@ char			*ft_unsigned_itoa(unsigned int num)
 		size--;
 	}
 	return (n_con);
+}
+
+int		ft_isdigit(int c)
+{
+	return (c >= '0' && c <= '9');
+}
+
+int		ft_isalpha(int c)
+{
+	return ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z'));
 }
