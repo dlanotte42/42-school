@@ -6,7 +6,7 @@
 /*   By: dlanotte <dlanotte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/23 18:04:27 by dlanotte          #+#    #+#             */
-/*   Updated: 2021/02/02 16:21:35 by dlanotte         ###   ########.fr       */
+/*   Updated: 2021/02/02 20:12:22 by dlanotte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int		ft_printf(const char *str, ...)
 			else if (ft_cc_pr((char *)str, i))
 				pr_c = pr_c + ft_putchar(str[i]);
 		}
-		i++;
+		i += ft_skip_content((char *)str, i);
 	}
 	va_end(variables);
 	return (pr_c);
@@ -73,33 +73,42 @@ bool	ft_cc_pr(char *str, int i)
 	return (true);
 }
 
+int		ft_skip_content(char *str, int i)
+{
+	int		skip;
+
+	skip = 1;
+	if (str[i] != '%')
+		return (1);
+	while (str[i + skip] && !ft_is_parameter(str[i + skip]))
+		skip++;
+	return (skip);
+}
+
 int	main(void)
 {
-	int				DEBUG = true;
-
-
+	bool			DEBUG = false;
+	bool			DEBUG_F = true;	
 	char			Author[] = "zxcvbinz";
 	char			Lettera = 'Z';
 	int 			Numero = 50006;
 	char			NumeroChar[] = "100012";
-	//char			*lett_p;
 	unsigned int	int_u = 4294967295;
 
-	//lett_p = &Lettera;
-
-	//ft_printf("%c %c", Lettera, Lettera);
-
-	//ft_printf("Acs ipA %s", Author);
-
-
-	//ft_printf("MY PRINTF: %d\n", ft_printf("unsigned int: %u\n", int_u));
 	if (DEBUG)
 	{
-		ft_printf("NUM: %d\n", ft_printf("iiii\n||||||MY VERSION||||||\nCiao Mondo, io mi chiamo %s\n(%%)", Author));
+		ft_printf("NUM: %d\n", ft_printf("iiii\n||||||MY VERSION||||||\nCiao Mondo, io mi chiamo %.0s\n(%%)", Author));
 		ft_printf("MY PRINTF: %d\n", ft_printf("ID: %c(c) Test by %s(s) %i(i) + %d(d) = %s(s) unsigned int: %u(u) Controllo Flag=0*.\n", Lettera, Author, Numero, Numero, NumeroChar, int_u));
 	 
 		printf("ORI: %d\n", printf("iiii\n||||||OR VERSION||||||\nCiao Mondo, io mi chiamo %s\n(%%)", Author));
 		printf("OR PRINTF: %d\n\n", printf("ID: %c(c) Test by %s(s) %i(i) + %d(d) = %s(s) unsigned int: %u(u) Controllo Flag=0*.\n", Lettera, Author, Numero, Numero, NumeroChar, int_u));
 	}
+	else if (DEBUG_F)
+	{
+		ft_printf("NUM: %d\n", ft_printf("TEST FLAG : %3s\n", Author));
+		printf("\n");
+		printf("OR: %d\n", printf("TEST FLAG : %3s\n", Author));
+	}
+
 	return (0);
 }

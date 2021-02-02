@@ -6,7 +6,7 @@
 /*   By: dlanotte <dlanotte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/23 17:41:46 by dlanotte          #+#    #+#             */
-/*   Updated: 2021/02/02 16:26:56 by dlanotte         ###   ########.fr       */
+/*   Updated: 2021/02/02 19:44:23 by dlanotte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,11 @@
 # include <stdlib.h>
 # include <stdbool.h>
 
+int		ft_find_numb(char *str, int i);
+int		ft_atoi(char *str);
 int		ft_printf(const char *str, ...);
+int		ft_exec_flag(char flag, int len, int width);
+int		ft_skip_content(char *str, int i);
 int		ft_isalpha(int c);
 int		ft_isdigit(int c);
 int		ft_putstr(char *str);
@@ -36,5 +40,6 @@ char    *ft_unsigned_itoa(unsigned int num);
 char   	ft_is_flag(char c);
 char    ft_is_parameter(char c);
 bool	ft_cc_pr(char *str, int i);
+
 
 #endif

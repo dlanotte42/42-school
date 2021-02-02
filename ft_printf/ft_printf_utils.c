@@ -6,7 +6,7 @@
 /*   By: dlanotte <dlanotte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/23 18:19:13 by dlanotte          #+#    #+#             */
-/*   Updated: 2021/02/02 16:29:58 by dlanotte         ###   ########.fr       */
+/*   Updated: 2021/02/02 20:12:14 by dlanotte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,3 +55,14 @@ int		ft_strlen(char *str)
 	return (i);
 }
 
+int		ft_exec_flag(char flag, int len, int width)
+{
+	int		printed;
+
+	printed = 0;
+	width -= len;
+	while (width-- && width >= 0)
+		printed = printed + ft_putchar(' ');
+
+	return (printed);
+}

@@ -6,7 +6,7 @@
 /*   By: dlanotte <dlanotte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/23 18:18:03 by dlanotte          #+#    #+#             */
-/*   Updated: 2021/02/02 16:28:53 by dlanotte         ###   ########.fr       */
+/*   Updated: 2021/02/02 19:56:05 by dlanotte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,13 +35,12 @@ char		*return_flags(void)
 {
 	char		*flags;
 
-	if (!(flags = malloc(sizeof(char) * 5)))
+	if (!(flags = malloc(sizeof(char) * 4)))
 		return (NULL);
 	flags[0] = '-';
-	flags[1] = '0';
-	flags[2] = '.';
-	flags[3] = '*';
-	flags[4] = '\0';
+	flags[1] = '.';
+	flags[2] = '*';
+	flags[3] = '\0';
 	return (flags);
 }
 
