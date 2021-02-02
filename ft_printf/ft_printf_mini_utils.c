@@ -6,13 +6,13 @@
 /*   By: dlanotte <dlanotte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/23 18:18:03 by dlanotte          #+#    #+#             */
-/*   Updated: 2021/01/31 19:04:19 by dlanotte         ###   ########.fr       */
+/*   Updated: 2021/02/02 16:28:53 by dlanotte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static char		*return_parameter(void)
+char		*return_parameter(void)
 {
 	char		*parameter;
 
@@ -31,7 +31,7 @@ static char		*return_parameter(void)
 	return (parameter);
 }
 
-static char		*return_flags(void)
+char		*return_flags(void)
 {
 	char		*flags;
 
@@ -47,35 +47,45 @@ static char		*return_flags(void)
 
 char			ft_is_parameter(char c)
 {
-	static char *parameter;
-	char		*p_to_parameter;
+	char		return_value;
+	char		*parameter;
+	int			i;
 
-	if (!parameter)
-		parameter = return_parameter();
-	p_to_parameter = parameter;
-	while (*p_to_parameter)
+	i = 0;
+	parameter = return_parameter();
+	while (parameter[i])
 	{
-		if (c == *p_to_parameter)
-			return (*p_to_parameter);
-		p_to_parameter++;
+		if (c == parameter[i])
+		{
+			return_value = parameter[i];
+			free(parameter);
+			return (return_value);
+		}
+		i++;
 	}
+	free(parameter);
 	return (0);
 }
 
 char			ft_is_flag(char c)
 {
-	static char	*flags;
-	char		*p_to_flags;
+	char		*flags;
+	int			i;
+	char		return_value;
 
-	if (!flags)
-		flags = return_flags();
-	p_to_flags = flags;
-	while (*p_to_flags)
+	i = 0;
+	flags = return_flags();
+	while (flags[i])
 	{
-		if (c == *p_to_flags)
-			return (*p_to_flags);
-		p_to_flags++;
+		if (c == flags[i])
+		{
+			return_value = flags[i];
+			free(flags);
+			return (return_value);
+		}
+		i++;
 	}
+	free(flags);
 	return (0);
 }
 

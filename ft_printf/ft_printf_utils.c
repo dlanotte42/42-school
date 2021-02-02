@@ -6,7 +6,7 @@
 /*   By: dlanotte <dlanotte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/23 18:19:13 by dlanotte          #+#    #+#             */
-/*   Updated: 2021/01/31 19:04:14 by dlanotte         ###   ########.fr       */
+/*   Updated: 2021/02/02 16:29:58 by dlanotte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,23 +55,3 @@ int		ft_strlen(char *str)
 	return (i);
 }
 
-int		ft_calc_percent(char *str)
-{
-	int		i;
-	int		remove;
-
-	i = 0;
-	remove = 0;
-	while (str[i])
-	{
-		if (str[i] == '%' && ft_c_par(str, i))
-			remove = remove + ft_c_par(str, i);
-		else if (str[i] == '%' && str[i + 1] == '%')
-			remove += 2;
-		i++;
-	}
-	i = 0;
-
-
-	return (remove);
-}

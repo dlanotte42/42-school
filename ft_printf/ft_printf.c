@@ -6,7 +6,7 @@
 /*   By: dlanotte <dlanotte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/23 18:04:27 by dlanotte          #+#    #+#             */
-/*   Updated: 2021/01/31 20:21:38 by dlanotte         ###   ########.fr       */
+/*   Updated: 2021/02/02 16:21:35 by dlanotte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,12 @@ int		ft_printf(const char *str, ...)
 		}
 		else
 		{
-			if (ft_cc_pr((char *)str, i))
+			if (ft_cc_pr((char *)str, i) && str[i] == '%' && str[i + 1] == '%')
+			{
+				pr_c = pr_c + ft_putchar(str[i]);
+				i++;
+			}
+			else if (ft_cc_pr((char *)str, i))
 				pr_c = pr_c + ft_putchar(str[i]);
 		}
 		i++;
@@ -53,11 +58,11 @@ bool	ft_cc_pr(char *str, int i)
 		return (true);
 	else if (str[i] == ' ')
 		return (true);
-	else if (!ft_is_parameter(str[i]) && !ft_is_flag(str[i ]))
+	else if (!ft_is_parameter(str[i]) && !ft_is_flag(str[i]))
 		return (true);
 	else
 	{
-		while(str[i--])
+		while (str[i--])
 		{
 			if (str[i] == '%')
 				return (false);
@@ -65,12 +70,12 @@ bool	ft_cc_pr(char *str, int i)
 				return (true);
 		}
 	}
-	return (false);
+	return (true);
 }
 
 int	main(void)
 {
-	int				DEBUG = 0;
+	int				DEBUG = true;
 
 
 	char			Author[] = "zxcvbinz";
@@ -82,19 +87,19 @@ int	main(void)
 
 	//lett_p = &Lettera;
 
-	//ft_printf("%%");
+	//ft_printf("%c %c", Lettera, Lettera);
 
-	ft_printf("Acs ipA %s", Author);
+	//ft_printf("Acs ipA %s", Author);
 
 
 	//ft_printf("MY PRINTF: %d\n", ft_printf("unsigned int: %u\n", int_u));
 	if (DEBUG)
 	{
-		ft_printf("NUM: %d\n", ft_printf("\n||||||MY VERSION||||||\nCiao Mondo, io mi chiamo %.s\n(%%)", Author));
-		ft_printf("MY PRINTF: %d\n", ft_printf("ID: %c(c) Test by %.s(s) %i(i) + %d(d) = %s(s) unsigned int: %u(u)\n", Lettera, Author, Numero, Numero, NumeroChar, int_u));
+		ft_printf("NUM: %d\n", ft_printf("iiii\n||||||MY VERSION||||||\nCiao Mondo, io mi chiamo %s\n(%%)", Author));
+		ft_printf("MY PRINTF: %d\n", ft_printf("ID: %c(c) Test by %s(s) %i(i) + %d(d) = %s(s) unsigned int: %u(u) Controllo Flag=0*.\n", Lettera, Author, Numero, Numero, NumeroChar, int_u));
 	 
-		printf("ORI: %d\n", printf("\n||||||OR VERSION||||||\nCiao Mondo, io mi chiamo %s\n(%%)", Author));
-		printf("OR PRINTF: %d\n\n", printf("ID: %c(c) Test by %s(s) %i(i) + %d(d) = %s(s) unsigned int: %u(u)\n", Lettera, Author, Numero, Numero, NumeroChar, int_u));
+		printf("ORI: %d\n", printf("iiii\n||||||OR VERSION||||||\nCiao Mondo, io mi chiamo %s\n(%%)", Author));
+		printf("OR PRINTF: %d\n\n", printf("ID: %c(c) Test by %s(s) %i(i) + %d(d) = %s(s) unsigned int: %u(u) Controllo Flag=0*.\n", Lettera, Author, Numero, Numero, NumeroChar, int_u));
 	}
 	return (0);
 }

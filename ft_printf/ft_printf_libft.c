@@ -6,12 +6,11 @@
 /*   By: dlanotte <dlanotte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/23 18:17:53 by dlanotte          #+#    #+#             */
-/*   Updated: 2021/01/31 19:01:44 by dlanotte         ###   ########.fr       */
+/*   Updated: 2021/02/02 16:24:27 by dlanotte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
 
 static char		*ft_fill_table(char *n_con, int size, int num, int is_n)
 {
