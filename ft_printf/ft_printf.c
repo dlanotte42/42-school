@@ -6,7 +6,7 @@
 /*   By: dlanotte <dlanotte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/23 18:04:27 by dlanotte          #+#    #+#             */
-/*   Updated: 2021/02/02 20:12:22 by dlanotte         ###   ########.fr       */
+/*   Updated: 2021/02/03 19:14:55 by dlanotte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ int		ft_skip_content(char *str, int i)
 int	main(void)
 {
 	bool			DEBUG = false;
-	bool			DEBUG_F = true;	
+	bool			DEBUG_F = true;
 	char			Author[] = "zxcvbinz";
 	char			Lettera = 'Z';
 	int 			Numero = 50006;
@@ -105,9 +105,9 @@ int	main(void)
 	}
 	else if (DEBUG_F)
 	{
-		ft_printf("NUM: %d\n", ft_printf("TEST FLAG : %3s\n", Author));
+		printf("NUM: %d\n", ft_printf("TEST FLAG : %20.1s\n", Author));
 		printf("\n");
-		printf("OR: %d\n", printf("TEST FLAG : %3s\n", Author));
+		printf("OR: %d\n", printf("TEST FLAG : %20.1s\n", Author));
 	}
 
 	return (0);
