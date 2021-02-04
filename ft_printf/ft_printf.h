@@ -6,7 +6,7 @@
 /*   By: zxcvbinz <zxcvbinz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/23 17:41:46 by dlanotte          #+#    #+#             */
-/*   Updated: 2021/02/04 21:47:22 by zxcvbinz         ###   ########.fr       */
+/*   Updated: 2021/02/04 23:19:27 by zxcvbinz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ typedef struct	s_param
 	int		precisions;
 	char	type;
 }				t_param;
+
 t_param		ft_set_pa(t_param parameters, char *str, int i, char checked);
 int			ft_find_numb(char *str, int i);
 int			ft_atoi(char *str);
@@ -47,10 +48,8 @@ int			ft_sp(char *str, char *ori_string, int i);
 int			ft_cp(char letter);
 int			ft_up(unsigned int numb);
 int			ft_c_par(const char *str, int i);
-
 int			ft_print_precision(t_param params, char *str);
 int			ft_print_zeros(t_param params, int printed, char *str);
-
 char		*ft_itoa(int num);
 char		*ft_unsigned_itoa(unsigned int num);
 char		ft_is_flag(char c);

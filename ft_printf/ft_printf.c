@@ -6,13 +6,11 @@
 /*   By: zxcvbinz <zxcvbinz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/23 18:04:27 by dlanotte          #+#    #+#             */
-/*   Updated: 2021/02/04 22:38:16 by zxcvbinz         ###   ########.fr       */
+/*   Updated: 2021/02/05 00:04:43 by zxcvbinz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "ft_printf.h"
-
 
 int		ft_printf(const char *str, ...)
 {
@@ -78,7 +76,7 @@ int		ft_skip_content(char *str, int i)
 	int		skip;
 
 	skip = 1;
-	if (str[i] != '%')
+	if (str[i] != '%' || (str[i] == '%' && str[i - 1] == '%'))
 		return (1);
 	while (str[i + skip] && !ft_is_parameter(str[i + skip]))
 		skip++;
@@ -95,16 +93,15 @@ int	main(void)
 	char			NumeroChar[] = "100012";
 	unsigned int	int_u = 4294967295;
 
-
-	ft_printf(" ---- %d\n", ft_printf("%10.1s %100.3s", Author, Author));
-	printf(" ---- %d\n", printf("%10.1s %100.3s", Author, Author));
+	//ft_printf(" ---- %d\n", ft_printf("%10.1s %100.3s", Author, Author));
+	//printf(" ---- %d\n", printf("%10.1s %100.3s", Author, Author));
 
 	if (DEBUG)
 	{
-		ft_printf("NUM: %d\n", ft_printf("iiii\n||||||MY VERSION||||||\nCiao Mondo, io mi chiamo %.0s\n(%%)", Author));
+		ft_printf("NUM: %d\n", ft_printf("iiii\n||||||MY VERSION||||||\nCiao Mondo, io mi chiamo %.3s\n(%%)", Author));
 		ft_printf("MY PRINTF: %d\n", ft_printf("ID: %c(c) Test by %s(s) %i(i) + %d(d) = %s(s) unsigned int: %u(u) Controllo Flag=0*.\n", Lettera, Author, Numero, Numero, NumeroChar, int_u));
 	 
-		printf("ORI: %d\n", printf("iiii\n||||||OR VERSION||||||\nCiao Mondo, io mi chiamo %s\n(%%)", Author));
+		printf("ORI: %d\n", printf("iiii\n||||||OR VERSION||||||\nCiao Mondo, io mi chiamo %.3s\n(%%)", Author));
 		printf("OR PRINTF: %d\n\n", printf("ID: %c(c) Test by %s(s) %i(i) + %d(d) = %s(s) unsigned int: %u(u) Controllo Flag=0*.\n", Lettera, Author, Numero, Numero, NumeroChar, int_u));
 	}
 	else if (DEBUG_F)

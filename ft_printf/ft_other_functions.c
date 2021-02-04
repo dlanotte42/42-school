@@ -6,7 +6,7 @@
 /*   By: zxcvbinz <zxcvbinz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/02 19:08:59 by dlanotte          #+#    #+#             */
-/*   Updated: 2021/02/04 22:26:30 by zxcvbinz         ###   ########.fr       */
+/*   Updated: 2021/02/04 23:43:19 by zxcvbinz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,15 +68,18 @@ static int			ft_zeros_count(int number)
 {
 	char 					*number_str;
 	int						t_zeros;
+	int						i;
 
+	i = 0;
 	t_zeros = 0;
 	number_str = ft_itoa(number);
-	while(*number_str)
+	while(number_str[i])
 	{
-		if(*number_str == '0')
+		if(number_str[i] == '0')
 			t_zeros++;
-		number_str++;
+		i++;
 	}
+	free(number_str);
 	return (t_zeros);
 }
 
@@ -128,5 +131,3 @@ t_param		ft_set_pa(t_param parameters, char *str, int i, char checked)
 		parameters.zero = ft_zeros_check(str, i, parameters);
 	return (parameters);
 }
-
-
