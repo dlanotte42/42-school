@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_print_type_support.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dlanotte <dlanotte@student.42.fr>          +#+  +:+       +#+        */
+/*   By: zxcvbinz <zxcvbinz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/04 17:27:32 by dlanotte          #+#    #+#             */
-/*   Updated: 2021/02/04 19:43:30 by dlanotte         ###   ########.fr       */
+/*   Updated: 2021/02/04 22:34:36 by zxcvbinz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,58 +28,36 @@ int				ft_calc_precision(char *str, int i, t_param params)
 	return (0);
 }
 
-// Ricorati di togliere questa merda
-static char		*ft_add_zeros(char *str, t_param params, char *string)
+int				ft_print_precision(t_param params, char *str)
 {
-	int		zeros;
-	int		i;
-	int		j;
-
-	i = -1;
-	zeros = 0;
-	j = 0;
-	if (params.precision)
+	int 	printed;
+	
+	printed = 0;
+	while(params.precisions-- && str[printed] && params.type == 's')
 	{
-		if (params.width > params.precisions)
-			zeros = (params.width - params.precisions) + 1;
+		if (!params.width)
+			ft_putchar(str[printed]);
+		printed++;
 	}
-	else if (!params.precision)
-		if (params.width > ft_strlen(string))
-			zeros = (params.width - ft_strlen(string)) + 1;
-	if (params.zero)
-		while (zeros--)
-			str[i++] = '0';
-	else if (!params.zero)
-		while (zeros--)
-			str[i++] = ' ';
-	if (params.precision)
-		while (params.precisions--)
-			str[i++] = string[j++];
-	return (str);
+	return (printed);
 }
-// Ricorati di togliere questa merda
-char			*ft_create_string(char *str, t_param params)
-{
-	char	*new_str;
-	int		t_size;
 
-	t_size = 0;
-	if (params.width > ft_strlen(str))
-		t_size = params.width;
-	if (params.precision && params.precisions > params.width)
-		t_size = params.precisions;
-	if (params.precision && params.precisions < params.width)
-		t_size = params.width;
-	if (!params.width && params.precision)
-		t_size = params.precisions;
-	if (!t_size)
-		t_size = ft_strlen(str);
-	if (!(new_str = malloc(sizeof(char) * (t_size + 1))))
-		return (NULL);
-	new_str[t_size + 1] = '\0';
-	new_str = ft_add_zeros(new_str, params, str);
-	if (t_size && new_str[t_size - 1] != '\0')
-		return (new_str);
-	return (str);
+int				ft_print_zeros(t_param params, int printed, char *str)
+{
+	int		to_print;
+	int		i;
+
+	i = 0;
+	if (!params.precision)
+		printed = ft_strlen(str);
+	to_print = printed;
+	params.width -= printed;
+	while(--params.width >= 0)
+		if (params.zero)
+			printed += ft_putchar('0');
+		else
+			printed += ft_putchar(' ');
+	while(to_print--)
+		ft_putchar(str[i++]);
+	return (printed);
 }
-// Ricorati di togliere questa merda

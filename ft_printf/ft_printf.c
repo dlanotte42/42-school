@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dlanotte <dlanotte@student.42.fr>          +#+  +:+       +#+        */
+/*   By: zxcvbinz <zxcvbinz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/23 18:04:27 by dlanotte          #+#    #+#             */
-/*   Updated: 2021/02/04 19:35:38 by dlanotte         ###   ########.fr       */
+/*   Updated: 2021/02/04 22:38:16 by zxcvbinz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,12 +88,16 @@ int		ft_skip_content(char *str, int i)
 int	main(void)
 {
 	bool			DEBUG = false;
-	bool			DEBUG_F = true;	
+	bool			DEBUG_F = false;	
 	char			Author[] = "zxcvbinz";
 	char			Lettera = 'Z';
 	int 			Numero = 50006;
 	char			NumeroChar[] = "100012";
 	unsigned int	int_u = 4294967295;
+
+
+	ft_printf(" ---- %d\n", ft_printf("%10.1s %100.3s", Author, Author));
+	printf(" ---- %d\n", printf("%10.1s %100.3s", Author, Author));
 
 	if (DEBUG)
 	{
@@ -105,9 +109,27 @@ int	main(void)
 	}
 	else if (DEBUG_F)
 	{
-		ft_printf("NUM: %d\n", ft_printf("TEST FLAG : %11.9s\n", Author));
+		ft_printf(" - NUM: %d\n", ft_printf("TEST FLAG : %01.s", Author));
+		ft_printf(" - NUM: %d\n", ft_printf("TEST FLAG : %1.2s", Author));
+		ft_printf(" - NUM: %d\n", ft_printf("TEST FLAG : %10.3s", Author));
+		ft_printf(" - NUM: %d\n", ft_printf("TEST FLAG : %010.8s", Author));
+		ft_printf(" - NUM: %d\n", ft_printf("TEST FLAG : %01.s", Author));
+		ft_printf(" - NUM: %d\n", ft_printf("TEST FLAG : %s", Author));
+		ft_printf(" - NUM: %d\n", ft_printf("TEST FLAG : %.1s", Author));
+		ft_printf(" - NUM: %d\n", ft_printf("TEST FLAG : %.10s", Author));
+		ft_printf(" - NUM: %d\n", ft_printf("TEST FLAG : %.20s", Author));
+		ft_printf(" - NUM: %d\n", ft_printf("TEST FLAG : %100s", Author));
 		printf("\n");
-		printf("OR: %d\n", printf("TEST FLAG : %11.9s\n", Author));
+		printf(" - ORI: %d\n", printf("TEST FLAG : %01.s", Author));
+		printf(" - ORI: %d\n", printf("TEST FLAG : %1.2s", Author));
+		printf(" - ORI: %d\n", printf("TEST FLAG : %10.3s", Author));
+		printf(" - ORI: %d\n", printf("TEST FLAG : %010.8s", Author));
+		printf(" - ORI: %d\n", printf("TEST FLAG : %01.s", Author));
+		printf(" - ORI: %d\n", printf("TEST FLAG : %s", Author));
+		printf(" - ORI: %d\n", printf("TEST FLAG : %.1s", Author));
+		printf(" - ORI: %d\n", printf("TEST FLAG : %.10s", Author));
+		printf(" - ORI: %d\n", printf("TEST FLAG : %.20s", Author));
+		printf(" - ORI: %d\n", printf("TEST FLAG : %100s", Author));
 	}
 
 	return (0);
