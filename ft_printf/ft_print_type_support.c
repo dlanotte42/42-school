@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_print_type_support.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zxcvbinz <zxcvbinz@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dlanotte <dlanotte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/04 17:27:32 by dlanotte          #+#    #+#             */
-/*   Updated: 2021/02/05 15:29:28 by zxcvbinz         ###   ########.fr       */
+/*   Updated: 2021/02/05 19:29:34 by dlanotte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,14 @@ int				ft_calc_precision(char *str, int i, t_param params)
 
 int				ft_print_precision(t_param params, char *str)
 {
-	int 	printed;
-	
+	int		printed;
+
 	printed = 0;
-	while(params.precisions-- && str[printed] && params.type == 's')
+	while (params.precisions-- && str[printed] && params.type == 's')
 		if (!params.width)
-			ft_putchar(str[printed++]);
+			ft_putchar(str[++printed]);
+		else
+			printed++;
 	return (printed);
 }
 
@@ -49,12 +51,12 @@ int				ft_print_zeros(t_param params, int printed, char *str)
 		printed = ft_strlen(str);
 	to_print = printed;
 	params.width -= printed;
-	while(--params.width >= 0)
+	while (--params.width >= 0)
 		if (params.zero)
 			printed += ft_putchar('0');
 		else
 			printed += ft_putchar(' ');
-	while(to_print--)
+	while (to_print--)
 		ft_putchar(str[i++]);
 	return (printed);
 }

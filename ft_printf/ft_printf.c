@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zxcvbinz <zxcvbinz@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dlanotte <dlanotte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/23 18:04:27 by dlanotte          #+#    #+#             */
-/*   Updated: 2021/02/05 15:28:49 by zxcvbinz         ###   ########.fr       */
+/*   Updated: 2021/02/05 19:29:46 by dlanotte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,10 @@ int	main(void)
 
 	//ft_printf(" ---- %d\n", ft_printf("%10.1s %100.3s", Author, Author));
 	//printf(" ---- %d\n", printf("%10.1s %100.3s", Author, Author));
-
+	///ft_printf(" - NUM: %d\n", ft_printf("TEST FLAG : %10.3s", Author));
+	//ft_printf(" - NUM: %d\n", ft_printf("TEST FLAG : %010.8s", Author));
+	//printf(" - ORI: %d\n", printf("TEST FLAG : %10.3s", Author));
+	//printf(" - ORI: %d\n", printf("TEST FLAG : %010.8s", Author));
 	if (DEBUG)
 	{
 		ft_printf("NUM: %d\n", ft_printf("iiii\n||||||MY VERSION||||||\nCiao Mondo, io mi chiamo %.3s\n(%%)", Author));
