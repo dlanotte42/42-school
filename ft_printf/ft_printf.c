@@ -6,7 +6,7 @@
 /*   By: zxcvbinz <zxcvbinz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/23 18:04:27 by dlanotte          #+#    #+#             */
-/*   Updated: 2021/02/05 00:04:43 by zxcvbinz         ###   ########.fr       */
+/*   Updated: 2021/02/05 15:28:49 by zxcvbinz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ int		ft_skip_content(char *str, int i)
 int	main(void)
 {
 	bool			DEBUG = false;
-	bool			DEBUG_F = false;	
+	bool			DEBUG_F = true;	
 	char			Author[] = "zxcvbinz";
 	char			Lettera = 'Z';
 	int 			Numero = 50006;
