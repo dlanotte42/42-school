@@ -6,7 +6,7 @@
 /*   By: dlanotte <dlanotte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/23 18:04:27 by dlanotte          #+#    #+#             */
-/*   Updated: 2021/02/05 19:29:46 by dlanotte         ###   ########.fr       */
+/*   Updated: 2021/02/06 19:23:19 by dlanotte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,11 @@ int		ft_printf(const char *str, ...)
 		if (str[i] == '%' && str[i + 1] != '%')
 		{
 			if ((str[ft_c_par(str, i)] == 'd') || str[ft_c_par(str,i)] == 'i')
-				pr_c = pr_c + ft_ip(va_arg(variables, int));
+				pr_c = pr_c + ft_ip(va_arg(variables, int), (char *)str, i);
 			else if (str[ft_c_par(str,i)] == 's')
 				pr_c = pr_c + ft_sp(va_arg(variables, char *), (char *)str, i);
 			else if (str[ft_c_par(str,i)] == 'c')
-				pr_c = pr_c + ft_cp(va_arg(variables, int));
+				pr_c = pr_c + ft_cp(va_arg(variables, int), (char *)str, i);
 			else if (str[ft_c_par(str,i)] == 'u')
 				pr_c = pr_c + ft_up(va_arg(variables, unsigned int));
 		}
@@ -86,19 +86,15 @@ int		ft_skip_content(char *str, int i)
 int	main(void)
 {
 	bool			DEBUG = false;
-	bool			DEBUG_F = true;	
+	bool			DEBUG_F = false;
 	char			Author[] = "zxcvbinz";
 	char			Lettera = 'Z';
-	int 			Numero = 50006;
+	int				Numero = 50006;
 	char			NumeroChar[] = "100012";
 	unsigned int	int_u = 4294967295;
 
-	//ft_printf(" ---- %d\n", ft_printf("%10.1s %100.3s", Author, Author));
-	//printf(" ---- %d\n", printf("%10.1s %100.3s", Author, Author));
-	///ft_printf(" - NUM: %d\n", ft_printf("TEST FLAG : %10.3s", Author));
-	//ft_printf(" - NUM: %d\n", ft_printf("TEST FLAG : %010.8s", Author));
-	//printf(" - ORI: %d\n", printf("TEST FLAG : %10.3s", Author));
-	//printf(" - ORI: %d\n", printf("TEST FLAG : %010.8s", Author));
+	ft_printf(" ---- %d\n", ft_printf("%10.2d", Numero));
+	printf(" ---- %d\n", printf("%10.9d", Numero));
 	if (DEBUG)
 	{
 		ft_printf("NUM: %d\n", ft_printf("iiii\n||||||MY VERSION||||||\nCiao Mondo, io mi chiamo %.3s\n(%%)", Author));

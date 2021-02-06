@@ -6,7 +6,7 @@
 /*   By: dlanotte <dlanotte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/04 17:27:32 by dlanotte          #+#    #+#             */
-/*   Updated: 2021/02/05 19:29:34 by dlanotte         ###   ########.fr       */
+/*   Updated: 2021/02/06 19:26:00 by dlanotte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,11 @@ int				ft_print_precision(t_param params, char *str)
 	printed = 0;
 	while (params.precisions-- && str[printed] && params.type == 's')
 		if (!params.width)
-			ft_putchar(str[++printed]);
+			ft_putchar(str[printed++]);
 		else
 			printed++;
+	while (params.precisions-- && str[printed] && params.type == 'd')
+		printed += ft_putchar('0');
 	return (printed);
 }
 

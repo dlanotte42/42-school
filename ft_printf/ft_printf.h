@@ -6,7 +6,7 @@
 /*   By: dlanotte <dlanotte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/23 17:41:46 by dlanotte          #+#    #+#             */
-/*   Updated: 2021/02/05 19:30:34 by dlanotte         ###   ########.fr       */
+/*   Updated: 2021/02/06 19:19:46 by dlanotte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,9 @@ int			ft_calc_precision(char *str, int i, t_param params);
 int			ft_putchar(char c);
 int			ft_numlen(unsigned int num);
 int			ft_strlen(char *str);
-int			ft_ip(int numb);
+int			ft_ip(int numb, char *ori_string, int i);
 int			ft_sp(char *str, char *ori_string, int i);
-int			ft_cp(char letter);
+int			ft_cp(char letter, char *ori_string, int i);
 int			ft_up(unsigned int numb);
 int			ft_c_par(const char *str, int i);
 int			ft_print_precision(t_param params, char *str);
