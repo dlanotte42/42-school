@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_other_functions.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dlanotte <dlanotte@student.42.fr>          +#+  +:+       +#+        */
+/*   By: zxcvbinz <zxcvbinz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/02 19:08:59 by dlanotte          #+#    #+#             */
-/*   Updated: 2021/02/06 19:12:05 by dlanotte         ###   ########.fr       */
+/*   Updated: 2021/02/08 22:47:50 by zxcvbinz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,5 +131,7 @@ t_param			ft_set_pa(t_param parameters, char *str, int i, char checked)
 			parameters.zero = true;
 	if (parameters.zero)
 		parameters.zero = ft_zeros_check(str, i, parameters);
+	if (parameters.minus)
+		parameters.zero = false;
 	return (parameters);
 }

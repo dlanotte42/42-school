@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dlanotte <dlanotte@student.42.fr>          +#+  +:+       +#+        */
+/*   By: zxcvbinz <zxcvbinz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/23 17:41:46 by dlanotte          #+#    #+#             */
-/*   Updated: 2021/02/06 19:19:46 by dlanotte         ###   ########.fr       */
+/*   Updated: 2021/02/08 23:38:32 by zxcvbinz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,10 +46,10 @@ int			ft_strlen(char *str);
 int			ft_ip(int numb, char *ori_string, int i);
 int			ft_sp(char *str, char *ori_string, int i);
 int			ft_cp(char letter, char *ori_string, int i);
-int			ft_up(unsigned int numb);
+int			ft_up(unsigned int numb, char *ori_string, int i);
 int			ft_c_par(const char *str, int i);
-int			ft_print_precision(t_param params, char *str);
-int			ft_print_zeros(t_param params, int printed, char *str);
+int     	ft_precision(t_param params, char *str);
+int     	ft_width(t_param params, char *str);
 char		*ft_itoa(int num);
 char		*ft_unsigned_itoa(unsigned int num);
 char		ft_is_flag(char c);

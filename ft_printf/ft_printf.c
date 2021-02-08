@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dlanotte <dlanotte@student.42.fr>          +#+  +:+       +#+        */
+/*   By: zxcvbinz <zxcvbinz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/23 18:04:27 by dlanotte          #+#    #+#             */
-/*   Updated: 2021/02/06 19:23:19 by dlanotte         ###   ########.fr       */
+/*   Updated: 2021/02/08 23:40:18 by zxcvbinz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int		ft_printf(const char *str, ...)
 			else if (str[ft_c_par(str,i)] == 'c')
 				pr_c = pr_c + ft_cp(va_arg(variables, int), (char *)str, i);
 			else if (str[ft_c_par(str,i)] == 'u')
-				pr_c = pr_c + ft_up(va_arg(variables, unsigned int));
+				pr_c = pr_c + ft_up(va_arg(variables, unsigned int), (char *)str, i);
 		}
 		else
 		{
@@ -89,12 +89,15 @@ int	main(void)
 	bool			DEBUG_F = false;
 	char			Author[] = "zxcvbinz";
 	char			Lettera = 'Z';
-	int				Numero = 50006;
+	int				Numero = -50006;
 	char			NumeroChar[] = "100012";
 	unsigned int	int_u = 4294967295;
+	
+	ft_printf(" ---- %d\n", ft_printf("%40.30d", Numero));
+	printf(" ---- %d\n", printf("%40.30d", Numero));
+	//ft_printf(" ---- %10.4d\n", ft_printf("Ciao Mondo %010.0c", Lettera));
+	//printf(" ---- %10.4d\n", printf("Ciao Mondo %010.0c", Lettera));
 
-	ft_printf(" ---- %d\n", ft_printf("%10.2d", Numero));
-	printf(" ---- %d\n", printf("%10.9d", Numero));
 	if (DEBUG)
 	{
 		ft_printf("NUM: %d\n", ft_printf("iiii\n||||||MY VERSION||||||\nCiao Mondo, io mi chiamo %.3s\n(%%)", Author));
@@ -105,27 +108,27 @@ int	main(void)
 	}
 	else if (DEBUG_F)
 	{
-		ft_printf(" - NUM: %d\n", ft_printf("TEST FLAG : %01.s", Author));
-		ft_printf(" - NUM: %d\n", ft_printf("TEST FLAG : %1.2s", Author));
-		ft_printf(" - NUM: %d\n", ft_printf("TEST FLAG : %10.3s", Author));
-		ft_printf(" - NUM: %d\n", ft_printf("TEST FLAG : %010.8s", Author));
-		ft_printf(" - NUM: %d\n", ft_printf("TEST FLAG : %01.s", Author));
-		ft_printf(" - NUM: %d\n", ft_printf("TEST FLAG : %s", Author));
-		ft_printf(" - NUM: %d\n", ft_printf("TEST FLAG : %.1s", Author));
-		ft_printf(" - NUM: %d\n", ft_printf("TEST FLAG : %.10s", Author));
-		ft_printf(" - NUM: %d\n", ft_printf("TEST FLAG : %.20s", Author));
-		ft_printf(" - NUM: %d\n", ft_printf("TEST FLAG : %100s", Author));
+		ft_printf(" - NUM: %5.4d\n", ft_printf("TEST FLAG : %01.s", Author));
+		ft_printf(" - NUM: %5.4d\n", ft_printf("TEST FLAG : %1.2s", Author));
+		ft_printf(" - NUM: %5.4d\n", ft_printf("TEST FLAG : %10.3s", Author));
+		ft_printf(" - NUM: %5.4d\n", ft_printf("TEST FLAG : %010.8s", Author));
+		ft_printf(" - NUM: %5.4d\n", ft_printf("TEST FLAG : %01.s", Author));
+		ft_printf(" - NUM: %5.4d\n", ft_printf("TEST FLAG : %s", Author));
+		ft_printf(" - NUM: %5.4d\n", ft_printf("TEST FLAG : %.1s", Author));
+		ft_printf(" - NUM: %5.4d\n", ft_printf("TEST FLAG : %.10s", Author));
+		ft_printf(" - NUM: %5.4d\n", ft_printf("TEST FLAG : %.20s", Author));
+		ft_printf(" - NUM: %5.4d\n", ft_printf("TEST FLAG : %100s", Author));
 		printf("\n");
-		printf(" - ORI: %d\n", printf("TEST FLAG : %01.s", Author));
-		printf(" - ORI: %d\n", printf("TEST FLAG : %1.2s", Author));
-		printf(" - ORI: %d\n", printf("TEST FLAG : %10.3s", Author));
-		printf(" - ORI: %d\n", printf("TEST FLAG : %010.8s", Author));
-		printf(" - ORI: %d\n", printf("TEST FLAG : %01.s", Author));
-		printf(" - ORI: %d\n", printf("TEST FLAG : %s", Author));
-		printf(" - ORI: %d\n", printf("TEST FLAG : %.1s", Author));
-		printf(" - ORI: %d\n", printf("TEST FLAG : %.10s", Author));
-		printf(" - ORI: %d\n", printf("TEST FLAG : %.20s", Author));
-		printf(" - ORI: %d\n", printf("TEST FLAG : %100s", Author));
+		printf(" - ORI: %5.4d\n", printf("TEST FLAG : %01.s", Author));
+		printf(" - ORI: %5.4d\n", printf("TEST FLAG : %1.2s", Author));
+		printf(" - ORI: %5.4d\n", printf("TEST FLAG : %10.3s", Author));
+		printf(" - ORI: %5.4d\n", printf("TEST FLAG : %010.8s", Author));
+		printf(" - ORI: %5.4d\n", printf("TEST FLAG : %01.s", Author));
+		printf(" - ORI: %5.4d\n", printf("TEST FLAG : %s", Author));
+		printf(" - ORI: %5.4d\n", printf("TEST FLAG : %.1s", Author));
+		printf(" - ORI: %5.4d\n", printf("TEST FLAG : %.10s", Author));
+		printf(" - ORI: %5.4d\n", printf("TEST FLAG : %.20s", Author));
+		printf(" - ORI: %5.4d\n", printf("TEST FLAG : %100s", Author));
 	}
 
 	return (0);
