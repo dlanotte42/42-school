@@ -6,7 +6,7 @@
 /*   By: dlanotte <dlanotte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/23 18:17:53 by dlanotte          #+#    #+#             */
-/*   Updated: 2021/02/04 17:23:15 by dlanotte         ###   ########.fr       */
+/*   Updated: 2021/02/09 12:39:23 by dlanotte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,13 +49,9 @@ char			*ft_itoa(int num)
 		num = num * -1;
 	}
 	size = ft_numlen(num);
-	if (is_n)
-		size++;
 	if (!(n_con = malloc(sizeof(char) * size + 1)))
 		return (NULL);
 	ft_fill_table(n_con, size, num, is_n);
-	if (is_n)
-		n_con[0] = '-';
 	return (n_con);
 }
 
@@ -77,12 +73,12 @@ char			*ft_unsigned_itoa(unsigned int num)
 	return (n_con);
 }
 
-int		ft_isdigit(int c)
+int				ft_isdigit(int c)
 {
 	return (c >= '0' && c <= '9');
 }
 
-int		ft_isalpha(int c)
+int				ft_isalpha(int c)
 {
 	return ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z'));
 }

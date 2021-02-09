@@ -3,54 +3,75 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zxcvbinz <zxcvbinz@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dlanotte <dlanotte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/23 18:04:27 by dlanotte          #+#    #+#             */
-/*   Updated: 2021/02/08 23:40:18 by zxcvbinz         ###   ########.fr       */
+/*   Updated: 2021/02/09 19:24:56 by dlanotte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int		ft_printf(const char *str, ...)
+static int	ft_s_switcher(char *str, int i, va_list variables, int *ast)
+{
+	int				pr_c;
+
+	pr_c = 0;
+	if ((str[ft_c_par(str, i)] == 'd') || str[ft_c_par(str,i)] == 'i')
+		pr_c = pr_c + ft_ip(va_arg(variables, int), (char *)str, i, ast);
+	else if (str[ft_c_par(str,i)] == 's')
+		pr_c = pr_c + ft_sp(va_arg(variables, char *), (char *)str, i, ast);
+	else if (str[ft_c_par(str,i)] == 'c')
+		pr_c = pr_c + ft_cp(va_arg(variables, int), (char *)str, i, ast);
+	else if (str[ft_c_par(str,i)] == 'u')
+		pr_c = pr_c + ft_up(va_arg(variables, unsigned int)
+		, (char *)str, i, ast);
+	return (pr_c);
+}
+
+static int	ft_switcher(char *str, int i, va_list variables, int *asterisk)
+{
+	int				pr_c;
+
+	pr_c = 0;
+	if (str[i] == '%' && str[i + 1] != '%')
+		pr_c += ft_s_switcher(str, i, variables, asterisk);
+	else
+	{
+		if (ft_cc_pr((char *)str, i) && str[i] == '%' && str[i + 1] == '%')
+		{
+			pr_c = pr_c + ft_putchar(str[i]);
+			i++;
+		}
+		else if (ft_cc_pr((char *)str, i))
+			pr_c = pr_c + ft_putchar(str[i]);
+	}
+	return (pr_c);
+}
+
+int			ft_printf(const char *str, ...)
 {
 	va_list		variables;
+	va_list		*variables_p;
 	int			i;
 	int			pr_c;
+	int			*asterisk;
 
 	i = 0;
 	pr_c = 0;
+	variables_p = &variables;
 	va_start(variables, str);
+	asterisk = ft_check_asterisk(variables_p, (char *)str);
 	while (str[i])
 	{
-		if (str[i] == '%' && str[i + 1] != '%')
-		{
-			if ((str[ft_c_par(str, i)] == 'd') || str[ft_c_par(str,i)] == 'i')
-				pr_c = pr_c + ft_ip(va_arg(variables, int), (char *)str, i);
-			else if (str[ft_c_par(str,i)] == 's')
-				pr_c = pr_c + ft_sp(va_arg(variables, char *), (char *)str, i);
-			else if (str[ft_c_par(str,i)] == 'c')
-				pr_c = pr_c + ft_cp(va_arg(variables, int), (char *)str, i);
-			else if (str[ft_c_par(str,i)] == 'u')
-				pr_c = pr_c + ft_up(va_arg(variables, unsigned int), (char *)str, i);
-		}
-		else
-		{
-			if (ft_cc_pr((char *)str, i) && str[i] == '%' && str[i + 1] == '%')
-			{
-				pr_c = pr_c + ft_putchar(str[i]);
-				i++;
-			}
-			else if (ft_cc_pr((char *)str, i))
-				pr_c = pr_c + ft_putchar(str[i]);
-		}
+		pr_c += ft_switcher((char *)str, i, variables, asterisk);
 		i += ft_skip_content((char *)str, i);
 	}
 	va_end(variables);
 	return (pr_c);
 }
 
-bool	ft_cc_pr(char *str, int i)
+bool		ft_cc_pr(char *str, int i)
 {
 	if (str[i] == '%' && str[i + 1] == '%')
 		return (true);
@@ -71,9 +92,9 @@ bool	ft_cc_pr(char *str, int i)
 	return (true);
 }
 
-int		ft_skip_content(char *str, int i)
+int			ft_skip_content(char *str, int i)
 {
-	int		skip;
+	int			skip;
 
 	skip = 1;
 	if (str[i] != '%' || (str[i] == '%' && str[i - 1] == '%'))
@@ -92,9 +113,10 @@ int	main(void)
 	int				Numero = -50006;
 	char			NumeroChar[] = "100012";
 	unsigned int	int_u = 4294967295;
-	
-	ft_printf(" ---- %d\n", ft_printf("%40.30d", Numero));
-	printf(" ---- %d\n", printf("%40.30d", Numero));
+
+	ft_printf("--%d--\n", ft_printf("%*.*s\n", 100, 3, "Ciao"));
+	printf("--%d--\n", printf("%*.*s\n %*s", 100, 3,"Ciao", 2, "2"));
+
 	//ft_printf(" ---- %10.4d\n", ft_printf("Ciao Mondo %010.0c", Lettera));
 	//printf(" ---- %10.4d\n", printf("Ciao Mondo %010.0c", Lettera));
 

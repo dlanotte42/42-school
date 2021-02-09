@@ -6,7 +6,7 @@
 /*   By: dlanotte <dlanotte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/23 18:18:03 by dlanotte          #+#    #+#             */
-/*   Updated: 2021/02/04 17:23:16 by dlanotte         ###   ########.fr       */
+/*   Updated: 2021/02/09 12:38:51 by dlanotte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ char		*return_flags(void)
 	return (flags);
 }
 
-char			ft_is_parameter(char c)
+char		ft_is_parameter(char c)
 {
 	char		return_value;
 	char		*parameter;
@@ -66,7 +66,7 @@ char			ft_is_parameter(char c)
 	return (0);
 }
 
-char			ft_is_flag(char c)
+char		ft_is_flag(char c)
 {
 	char		*flags;
 	int			i;
@@ -88,7 +88,7 @@ char			ft_is_flag(char c)
 	return (0);
 }
 
-int				ft_c_par(const char *str, int i)
+int			ft_c_par(const char *str, int i)
 {
 	char	parameter;
 
