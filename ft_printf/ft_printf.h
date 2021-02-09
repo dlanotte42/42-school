@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dlanotte <dlanotte@student.42.fr>          +#+  +:+       +#+        */
+/*   By: zxcvbinz <zxcvbinz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/23 17:41:46 by dlanotte          #+#    #+#             */
-/*   Updated: 2021/02/09 19:19:54 by dlanotte         ###   ########.fr       */
+/*   Updated: 2021/02/09 23:36:03 by zxcvbinz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ typedef struct	s_param
 	bool	precision;
 	bool	minus;
 	bool	is_negative;
-	int		aster_count;
 	int		width;
 	int		precisions;
 	int		*asterisk_value;
@@ -46,14 +45,14 @@ int				ft_calc_precision(char *str, int i, t_param params);
 int				ft_putchar(char c);
 int				ft_numlen(unsigned int num);
 int				ft_strlen(char *str);
-int				ft_ip(int numb, char *ori_string, int i, int *aster);
-int				ft_sp(char *str, char *ori_string, int i, int *aster);
-int				ft_cp(char letter, char *ori_string, int i, int *aster);
-int				ft_up(unsigned int numb, char *ori_string, int i, int *aster);
+int				ft_ip(int numb, char *ori_string, int i, int *asterisk);
+int				ft_sp(char *str, char *ori_string, int i, int *asterisk);
+int				ft_cp(char letter, char *ori_string, int i, int *asterisk);
+int				ft_up(unsigned int numb, char *ori_string, int i, int *asterisk);
 int				ft_c_par(const char *str, int i);
 int				t_precision(t_param params, char *str);
 int				ft_width(t_param params, char *str);
-int				*ft_check_asterisk(va_list *list, char *str);
+int				*ft_check_asterisk(va_list *list, char *str, int i);
 char			*ft_itoa(int num);
 char			*ft_unsigned_itoa(unsigned int num);
 char			*return_null();

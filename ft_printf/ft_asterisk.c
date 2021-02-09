@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_asterisk.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dlanotte <dlanotte@student.42.fr>          +#+  +:+       +#+        */
+/*   By: zxcvbinz <zxcvbinz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/09 14:47:34 by dlanotte          #+#    #+#             */
-/*   Updated: 2021/02/09 18:53:24 by dlanotte         ###   ########.fr       */
+/*   Updated: 2021/02/10 00:19:05 by zxcvbinz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,41 +16,41 @@ static int		*ft_fill_asterisk(va_list *list, int *result, int t_asterisk)
 {
 	int		i;
 
-	i = 0;
-	if (!(result = malloc(sizeof(int) * (t_asterisk + 1))))
+	i = 1;
+	if (!(result = malloc(sizeof(int) * (t_asterisk + 2))))
 		return ((int *)NULL);
-	result[t_asterisk + 1] = '\0';
-	while (i < t_asterisk)
-		result[i++] = va_arg(*list, int);
+	while (i < (t_asterisk + 1))
+	{
+		result[i] = va_arg(*list, int);
+		if (result[i] < 0)
+		{
+			result[0] = '-';
+			result[i] *= -1;
+		}
+		i++;
+	}
 	return (result);
 }
 
-int				*ft_check_asterisk(va_list *list, char *str)
+int				*ft_check_asterisk(va_list *list, char *str, int i)
 {
 	int		*result;
-	int		i;
-	int		j;
 	int		t_asterisk;
 
-	j = 0;
-	i = 0;
 	t_asterisk = 0;
-	while (str[i])
+	i++;
+	while(!ft_is_parameter(str[i]))
 	{
-		if (str[i++] == '%')
-		{
-			j = i - 1;
-			while (!ft_is_parameter(str[++j]))
-			{
-				if (str[j] == '*' && str[j - 1] == '.')
-					t_asterisk++;
-				else if (str[j] == '*' && str[j - 1] != '*')
-					t_asterisk++;
-			}
-		}
+		if (str[i] == '*' && str[i - 1] == '.')
+			t_asterisk++;
+		else if (str[i] == '*' && str[i - 1] != '*')
+			if (str[i + 1] != '*')
+				t_asterisk++;
+		i++;
 	}
-	if (!(result = ft_fill_asterisk(list, result, t_asterisk)))
-		return ((int *)NULL);
+	if (t_asterisk > 2)
+		t_asterisk = 2;
+	result = ft_fill_asterisk(list, result, t_asterisk);
 	return (result);
 }
 

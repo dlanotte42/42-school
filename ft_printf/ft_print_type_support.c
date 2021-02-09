@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_print_type_support.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dlanotte <dlanotte@student.42.fr>          +#+  +:+       +#+        */
+/*   By: zxcvbinz <zxcvbinz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/04 17:27:32 by dlanotte          #+#    #+#             */
-/*   Updated: 2021/02/09 17:46:47 by dlanotte         ###   ########.fr       */
+/*   Updated: 2021/02/10 00:25:33 by zxcvbinz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,8 @@ int				ft_precision(t_param params, char *str)
 	}
 	else if (params.type == 'd')
 		printed += ft_s_precision(params, str, printed);
+	else if (params.type ==  'c')
+		printed += ft_putstr(str);
 	return (printed);
 }
 

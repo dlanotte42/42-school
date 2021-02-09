@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_other_functions.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dlanotte <dlanotte@student.42.fr>          +#+  +:+       +#+        */
+/*   By: zxcvbinz <zxcvbinz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/02 19:08:59 by dlanotte          #+#    #+#             */
-/*   Updated: 2021/02/09 19:08:22 by dlanotte         ###   ########.fr       */
+/*   Updated: 2021/02/10 00:14:23 by zxcvbinz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,10 +81,9 @@ static bool		ft_zeros_check(char *str, int i, t_param params)
 
 static t_param	ft_s_set_pa(t_param params, char *str, int i)
 {
-	static int counter;
+	int counter;
 
-	if (!counter)
-		counter = 0;
+	counter = 1;
 	if (params.zero)
 		params.zero = ft_zeros_check(str, i, params);
 	if (params.minus)
@@ -102,6 +101,8 @@ static t_param	ft_s_set_pa(t_param params, char *str, int i)
 			if (str[i + 1] != '*')
 				params.width = params.asterisk_value[counter++];
 	}
+	if (params.asterisk_value[0] && params.asterisk_value[0] == '-')
+		params.minus = true;
 	return (params);
 }
 
