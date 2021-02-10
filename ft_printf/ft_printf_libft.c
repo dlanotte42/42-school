@@ -6,7 +6,7 @@
 /*   By: dlanotte <dlanotte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/23 18:17:53 by dlanotte          #+#    #+#             */
-/*   Updated: 2021/02/09 12:39:23 by dlanotte         ###   ########.fr       */
+/*   Updated: 2021/02/10 17:20:53 by dlanotte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ char			*ft_itoa(int num)
 	size = ft_numlen(num);
 	if (!(n_con = malloc(sizeof(char) * size + 1)))
 		return (NULL);
-	ft_fill_table(n_con, size, num, is_n);
+	n_con = ft_fill_table(n_con, size, num, is_n);
 	return (n_con);
 }
 

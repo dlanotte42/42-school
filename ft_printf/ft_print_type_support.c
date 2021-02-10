@@ -3,42 +3,29 @@
 /*                                                        :::      ::::::::   */
 /*   ft_print_type_support.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zxcvbinz <zxcvbinz@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dlanotte <dlanotte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/04 17:27:32 by dlanotte          #+#    #+#             */
-/*   Updated: 2021/02/10 00:25:33 by zxcvbinz         ###   ########.fr       */
+/*   Updated: 2021/02/10 20:08:53 by dlanotte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int				ft_calc_width(char *str, int i, t_param params)
-{
-	while (str[i++] != params.type)
-		if (ft_isdigit(str[i]) && str[i] != '0')
-			if (str[i - 1] != '.')
-				return (ft_find_numb(str, i));
-	return (0);
-}
-
-int				ft_calc_precision(char *str, int i, t_param params)
-{
-	if (ft_isdigit(str[i + 1]))
-		return (ft_find_numb(str, i + 1));
-	return (0);
-}
-
 static int		ft_s_precision(t_param params, char *str, int printed)
 {
-	if (params.type == 'd' && params.is_negative)
+	if (params.type == 'd' && params.is_neg)
 		printed += ft_putchar('-');
 	if (params.precision)
 	{
+		if (!params.precisions)
+			params.d_zero = true;
 		if (params.precisions >= ft_strlen(str))
 			params.precisions -= ft_strlen(str);
 		while (params.precisions--)
 			printed += ft_putchar('0');
-		printed += ft_putstr(str);
+		if (!params.d_zero)
+			printed += ft_putstr(str);
 	}
 	else
 		printed += ft_putstr(str);
@@ -52,6 +39,11 @@ int				ft_precision(t_param params, char *str)
 
 	i = 0;
 	printed = 0;
+	if (params.r_type == 'p' && !params.zero)
+	{
+		ft_putstr("0x");
+		printed += 1;
+	}
 	if (params.type == 's')
 	{
 		if (params.precision)
@@ -62,7 +54,9 @@ int				ft_precision(t_param params, char *str)
 	}
 	else if (params.type == 'd')
 		printed += ft_s_precision(params, str, printed);
-	else if (params.type ==  'c')
+	else if (params.type == 'c' && str[0] == '\0')
+		printed += ft_putchar(0);
+	else if (params.type == 'c')
 		printed += ft_putstr(str);
 	return (printed);
 }
@@ -72,13 +66,26 @@ int				ft_width(t_param params, char *str)
 	int			printed;
 
 	printed = 0;
-	if (params.type == 'd' && params.is_negative)
+	if (params.type == 'd' && params.is_neg)
 		params.width -= 1;
+	if (params.type == 'd' && params.is_neg && params.zero && !params.precision)
+	{
+		printed += ft_putchar('-');
+		params.is_neg = false;
+	}
 	if (params.minus)
 		printed += ft_precision(params, str);
+	if (params.r_type == 'p')
+	{
+		params.width -= 2;
+		if (params.zero)
+			printed += ft_putstr("0x");
+	}
 	while (params.width > 0)
 	{
-		if (params.zero)
+		if (params.zero && params.type != 'd')
+			printed += ft_putchar('0');
+		else if (params.zero && params.type == 'd' && !params.precision)
 			printed += ft_putchar('0');
 		else
 			printed += ft_putchar(' ');

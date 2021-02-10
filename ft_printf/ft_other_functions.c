@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_other_functions.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zxcvbinz <zxcvbinz@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dlanotte <dlanotte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/02 19:08:59 by dlanotte          #+#    #+#             */
-/*   Updated: 2021/02/10 00:14:23 by zxcvbinz         ###   ########.fr       */
+/*   Updated: 2021/02/10 19:46:36 by dlanotte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,26 +14,26 @@
 
 int				ft_atoi(char *str)
 {
-	int						is_negative;
+	int						is_neg;
 	unsigned long long		result;
 
 	result = 0;
-	is_negative = 1;
+	is_neg = 1;
 	while (*str && (*str == ' ' || *str == '\n' || *str == '\t' ||
 			*str == '\v' || *str == '\f' || *str == '\r'))
 		str++;
 	if (*str == '-')
-		is_negative = -1;
+		is_neg = -1;
 	if (*str == '+' || *str == '-')
 		str++;
 	while (*str && ft_isdigit(*str))
 	{
 		result = result * 10 + (*str - 48);
 		if (result >= 9223372036854775808ULL)
-			return (is_negative == 1 ? -1 : 0);
+			return (is_neg == 1 ? -1 : 0);
 		str++;
 	}
-	return ((int)result * is_negative);
+	return ((int)result * is_neg);
 }
 
 static int		ft_zeros_count(int number)
@@ -129,5 +129,6 @@ t_param			ft_set_pa(t_param parameters, char *str, int i, char checked)
 		else if (str[i] == '0' && !ft_isdigit(str[i - 1]))
 			parameters.zero = true;
 	parameters = ft_s_set_pa(parameters, str, i);
+	parameters.d_zero = false;
 	return (parameters);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zxcvbinz <zxcvbinz@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dlanotte <dlanotte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/23 17:41:46 by dlanotte          #+#    #+#             */
-/*   Updated: 2021/02/09 23:36:03 by zxcvbinz         ###   ########.fr       */
+/*   Updated: 2021/02/10 20:01:17 by dlanotte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,13 @@ typedef struct	s_param
 	bool	asterisk;
 	bool	precision;
 	bool	minus;
-	bool	is_negative;
+	bool	is_neg;
+	bool	d_zero;
 	int		width;
 	int		precisions;
 	int		*asterisk_value;
 	char	type;
+	char	r_type;
 }				t_param;
 
 t_param			ft_set_pa(t_param parameters, char *str, int i, char checked);
@@ -46,9 +48,11 @@ int				ft_putchar(char c);
 int				ft_numlen(unsigned int num);
 int				ft_strlen(char *str);
 int				ft_ip(int numb, char *ori_string, int i, int *asterisk);
+int				ft_ii_p(int numb, char *ori_string, int i, int *aster);
+int				ft_p(va_list item, char *ori_string, int i, int *aster);
 int				ft_sp(char *str, char *ori_string, int i, int *asterisk);
 int				ft_cp(char letter, char *ori_string, int i, int *asterisk);
-int				ft_up(unsigned int numb, char *ori_string, int i, int *asterisk);
+int				ft_up(unsigned int numb, char *ori_string, int i, int *asteri);
 int				ft_c_par(const char *str, int i);
 int				t_precision(t_param params, char *str);
 int				ft_width(t_param params, char *str);
