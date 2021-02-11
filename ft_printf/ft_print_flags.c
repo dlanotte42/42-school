@@ -6,7 +6,7 @@
 /*   By: zxcvbinz <zxcvbinz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/11 18:51:55 by dlanotte          #+#    #+#             */
-/*   Updated: 2021/02/11 19:11:59 by zxcvbinz         ###   ########.fr       */
+/*   Updated: 2021/02/11 23:07:31 by zxcvbinz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,8 @@ static int		ft_s_width(t_param params, int printed, char *str)
 	{
 		if (params.zero && params.type != 'd')
 			printed += ft_putchar('0');
-		else if (params.zero && params.type == 'd' && !params.precision)
+		else if (params.zero && params.type == 'd' && 
+				!params.precision && !params.minus)
 			printed += ft_putchar('0');
 		else
 			printed += ft_putchar(' ');
@@ -104,9 +105,9 @@ int				ft_width(t_param params, char *str)
 
 int				ft_find_numb(char *str, int i)
 {
-	int							len;
-	int							number;
-	char						*number_char;
+	int			len;
+	int			number;
+	char		*number_char;
 
 	len = 0;
 	while (ft_isdigit(str[i]))

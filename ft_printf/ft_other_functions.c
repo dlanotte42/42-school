@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_other_functions.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dlanotte <dlanotte@student.42.fr>          +#+  +:+       +#+        */
+/*   By: zxcvbinz <zxcvbinz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/02 19:08:59 by dlanotte          #+#    #+#             */
-/*   Updated: 2021/02/10 19:46:36 by dlanotte         ###   ########.fr       */
+/*   Updated: 2021/02/11 21:41:07 by zxcvbinz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,8 +101,6 @@ static t_param	ft_s_set_pa(t_param params, char *str, int i)
 			if (str[i + 1] != '*')
 				params.width = params.asterisk_value[counter++];
 	}
-	if (params.asterisk_value[0] && params.asterisk_value[0] == '-')
-		params.minus = true;
 	return (params);
 }
 
@@ -111,6 +109,7 @@ t_param			ft_set_pa(t_param parameters, char *str, int i, char checked)
 	parameters.asterisk = false;
 	parameters.minus = false;
 	parameters.precision = false;
+	parameters.precisions = 0;
 	parameters.zero = false;
 	parameters.type = checked;
 	parameters.width = ft_calc_width(str, i, parameters);

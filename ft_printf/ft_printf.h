@@ -6,7 +6,7 @@
 /*   By: zxcvbinz <zxcvbinz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/23 17:41:46 by dlanotte          #+#    #+#             */
-/*   Updated: 2021/02/11 19:19:57 by zxcvbinz         ###   ########.fr       */
+/*   Updated: 2021/02/11 21:47:42 by zxcvbinz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ typedef struct	s_param
 	char	r_type;
 }				t_param;
 
+t_param			ft_check_params(t_param params, char *str, char type);
 t_param			ft_set_pa(t_param parameters, char *str, int i, char checked);
 int				ft_find_numb(char *str, int i);
 int				ft_atoi(char *str);

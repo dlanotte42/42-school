@@ -6,7 +6,7 @@
 /*   By: zxcvbinz <zxcvbinz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/10 19:59:27 by dlanotte          #+#    #+#             */
-/*   Updated: 2021/02/11 19:20:30 by zxcvbinz         ###   ########.fr       */
+/*   Updated: 2021/02/11 21:57:37 by zxcvbinz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,16 +87,13 @@ int				ft_hex_x(va_list item, char *ori_string, int i, int *aster)
 	params.type = 'd';
 	params.r_type = 'x';
 	str = ft_foundhexadec(numb, 1);
-	if (params.precision && params.precisions >= ft_strlen(str))
-		params.width -= params.precisions;
-	else if (params.precisions <= ft_strlen(str) && params.precision && numb)
+	params = ft_check_params(params, str, 'd');
+	if (params.precisions <= ft_strlen(str) && params.precision && numb)
 	{
 		params.precisions = 0;
 		params.precision = false;
 		params.zero = false;
 	}
-	if (!params.precision)
-		params.width -= ft_strlen(str);
 	printed += ft_width(params, str);
 	free(str);
 	return (printed);
@@ -117,16 +114,13 @@ int				ft_hex_X(va_list item, char *ori_string, int i, int *aster)
 	params.type = 'd';
 	params.r_type = 'X';
 	str = ft_foundhexadec(numb, 2);
-	if (params.precision && params.precisions >= ft_strlen(str))
-		params.width -= params.precisions;
-	else if (params.precisions <= ft_strlen(str) && params.precision && numb)
+	params = ft_check_params(params, str, 'd');
+	if (params.precisions <= ft_strlen(str) && params.precision && numb)
 	{
 		params.precisions = 0;
 		params.precision = false;
 		params.zero = false;
 	}
-	if (!params.precision)
-		params.width -= ft_strlen(str);
 	printed += ft_width(params, str);
 	free(str);
 	return (printed);

@@ -6,7 +6,7 @@
 /*   By: zxcvbinz <zxcvbinz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/09 14:47:34 by dlanotte          #+#    #+#             */
-/*   Updated: 2021/02/11 19:02:34 by zxcvbinz         ###   ########.fr       */
+/*   Updated: 2021/02/11 21:57:15 by zxcvbinz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,6 @@ static int		*ft_fill(va_list *list, int *result, int t_asterisk)
 	while (i < (t_asterisk + 1))
 	{
 		result[i] = va_arg(*list, int);
-		if (result[i] < 0)
-		{
-			result[0] = '-';
-			result[i] *= -1;
-		}
 		i++;
 	}
 	return (result);
@@ -117,16 +112,13 @@ int				ft_p(va_list item, char *ori_string, int i, int *aster)
 	params.type = 'd';
 	params.r_type = 'p';
 	str = ft_foundpointer(numb);
-	if (params.precision && params.precisions >= ft_strlen(str))
-		params.width -= params.precisions;
-	else if (params.precisions <= ft_strlen(str) && params.precision && numb)
+	params = ft_check_params(params, str, 'd');
+	if (params.precisions <= ft_strlen(str) && params.precision && numb)
 	{
 		params.precisions = 0;
 		params.precision = false;
 		params.zero = false;
 	}
-	if (!params.precision)
-		params.width -= ft_strlen(str);
 	printed += ft_width(params, str);
 	free(str);
 	return (printed);
