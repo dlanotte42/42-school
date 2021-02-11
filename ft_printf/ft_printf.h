@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dlanotte <dlanotte@student.42.fr>          +#+  +:+       +#+        */
+/*   By: zxcvbinz <zxcvbinz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/23 17:41:46 by dlanotte          #+#    #+#             */
-/*   Updated: 2021/02/10 20:01:17 by dlanotte         ###   ########.fr       */
+/*   Updated: 2021/02/11 19:19:57 by zxcvbinz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,8 @@ int				ft_ip(int numb, char *ori_string, int i, int *asterisk);
 int				ft_ii_p(int numb, char *ori_string, int i, int *aster);
 int				ft_p(va_list item, char *ori_string, int i, int *aster);
 int				ft_sp(char *str, char *ori_string, int i, int *asterisk);
+int				ft_hex_x(va_list item, char *ori_string, int i, int *aster);
+int				ft_hex_X(va_list item, char *ori_string, int i, int *aster);
 int				ft_cp(char letter, char *ori_string, int i, int *asterisk);
 int				ft_up(unsigned int numb, char *ori_string, int i, int *asteri);
 int				ft_c_par(const char *str, int i);

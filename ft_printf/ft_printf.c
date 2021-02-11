@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dlanotte <dlanotte@student.42.fr>          +#+  +:+       +#+        */
+/*   By: zxcvbinz <zxcvbinz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/23 18:04:27 by dlanotte          #+#    #+#             */
-/*   Updated: 2021/02/10 20:09:54 by dlanotte         ###   ########.fr       */
+/*   Created: 2021/02/11 18:19:54 by zxcvbinz          #+#    #+#             */
+/*   Updated: 2021/02/11 19:36:36 by zxcvbinz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,10 @@ static int	ft_s_switcher(char *str, int i, va_list *var)
 		pr_c = pr_c + ft_ii_p(va_arg(*var, int), (char *)str, i, ast);
 	else if (str[ft_c_par(str,i)] == 'p')
 		pr_c = pr_c + ft_p(*var, (char *)str, i, ast);
+	else if (str[ft_c_par(str,i)] == 'x')
+		pr_c = pr_c + ft_hex_x(*var, (char *)str, i, ast);
+	else if (str[ft_c_par(str,i)] == 'X')
+		pr_c = pr_c + ft_hex_X(*var, (char *)str, i, ast);
 	free(ast);
 	return (pr_c);
 }
@@ -87,6 +91,10 @@ bool		ft_cc_pr(char *str, int i)
 	{
 		while (str[i--])
 		{
+			if (str[i] == '%' && str[i - 1] == '%' && str[i - 2] == '%')
+				return (false);
+			if (str[i] == '%' && str[i - 1] == '%')
+				return (true);
 			if (str[i] == '%')
 				return (false);
 			else if (ft_is_parameter(str[i]))

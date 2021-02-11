@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_type_support.c                            :+:      :+:    :+:   */
+/*   ft_print_flags.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dlanotte <dlanotte@student.42.fr>          +#+  +:+       +#+        */
+/*   By: zxcvbinz <zxcvbinz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/04 17:27:32 by dlanotte          #+#    #+#             */
-/*   Updated: 2021/02/10 20:08:53 by dlanotte         ###   ########.fr       */
+/*   Created: 2021/02/11 18:51:55 by dlanotte          #+#    #+#             */
+/*   Updated: 2021/02/11 19:11:59 by zxcvbinz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,23 @@ int				ft_precision(t_param params, char *str)
 	return (printed);
 }
 
+static int		ft_s_width(t_param params, int printed, char *str)
+{
+	while (params.width > 0)
+	{
+		if (params.zero && params.type != 'd')
+			printed += ft_putchar('0');
+		else if (params.zero && params.type == 'd' && !params.precision)
+			printed += ft_putchar('0');
+		else
+			printed += ft_putchar(' ');
+		params.width--;
+	}
+	if (!params.minus)
+		printed += ft_precision(params, str);
+	return (printed);
+}
+
 int				ft_width(t_param params, char *str)
 {
 	int			printed;
@@ -81,17 +98,34 @@ int				ft_width(t_param params, char *str)
 		if (params.zero)
 			printed += ft_putstr("0x");
 	}
-	while (params.width > 0)
-	{
-		if (params.zero && params.type != 'd')
-			printed += ft_putchar('0');
-		else if (params.zero && params.type == 'd' && !params.precision)
-			printed += ft_putchar('0');
-		else
-			printed += ft_putchar(' ');
-		params.width--;
-	}
-	if (!params.minus)
-		printed += ft_precision(params, str);
+	printed = ft_s_width(params, printed, str);
 	return (printed);
+}
+
+int				ft_find_numb(char *str, int i)
+{
+	int							len;
+	int							number;
+	char						*number_char;
+
+	len = 0;
+	while (ft_isdigit(str[i]))
+	{
+		len++;
+		i++;
+	}
+	if (!(number_char = malloc(sizeof(char) * (len + 1))))
+		return ((int)NULL);
+	i -= len;
+	len = 0;
+	while (ft_isdigit(str[i]))
+	{
+		number_char[len] = str[i];
+		i++;
+		len++;
+	}
+	number_char[len] = '\0';
+	number = ft_atoi(number_char);
+	free(number_char);
+	return (number);
 }

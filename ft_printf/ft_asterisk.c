@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_asterisk.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dlanotte <dlanotte@student.42.fr>          +#+  +:+       +#+        */
+/*   By: zxcvbinz <zxcvbinz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/09 14:47:34 by dlanotte          #+#    #+#             */
-/*   Updated: 2021/02/10 20:01:38 by dlanotte         ###   ########.fr       */
+/*   Updated: 2021/02/11 19:02:34 by zxcvbinz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,32 +57,19 @@ int				*ft_check_asterisk(va_list *list, char *str, int i)
 	return (result);
 }
 
-int				ft_find_numb(char *str, int i)
+static char			*ft_s_ffpointer(char *str, long unsigned int i)
 {
-	int							len;
-	int							number;
-	char						*number_char;
-
-	len = 0;
-	while (ft_isdigit(str[i]))
+	if (i == 0)	
 	{
-		len++;
-		i++;
+		if (!(str = malloc(sizeof(char) * 2)))
+			return (NULL);
+		str[0] = 48;
+		str[1] = '\0';
+		return (str);
 	}
-	if (!(number_char = malloc(sizeof(char) * (len + 1))))
-		return ((int)NULL);
-	i -= len;
-	len = 0;
-	while (ft_isdigit(str[i]))
-	{
-		number_char[len] = str[i];
-		i++;
-		len++;
-	}
-	number_char[len] = '\0';
-	number = ft_atoi(number_char);
-	free(number_char);
-	return (number);
+	if (!(str = malloc(sizeof(char) * 17)))
+		return (NULL);
+	return (str);
 }
 
 static char			*ft_foundpointer(long unsigned int i)
@@ -94,8 +81,9 @@ static char			*ft_foundpointer(long unsigned int i)
 
 	k = 0;
 	j = 0;
-	if (!(str = malloc(sizeof(char) * 17)))
-		return (NULL);
+	str = ft_s_ffpointer(str, i);
+	if (str[0] == 48 && str[1] == '\0')
+		return (str);
 	while (i > 0)
 	{
 		arr[j] = i % 16;
@@ -125,7 +113,8 @@ int				ft_p(va_list item, char *ori_string, int i, int *aster)
 	printed = 0;
 	params.is_neg = false;
 	params.asterisk_value = aster;
-	params = ft_set_pa(params, ori_string, i, 'd');
+	params = ft_set_pa(params, ori_string, i, 'p');
+	params.type = 'd';
 	params.r_type = 'p';
 	str = ft_foundpointer(numb);
 	if (params.precision && params.precisions >= ft_strlen(str))
