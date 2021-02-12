@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zxcvbinz <zxcvbinz@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dlanotte <dlanotte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/23 17:41:46 by dlanotte          #+#    #+#             */
-/*   Updated: 2021/02/11 21:47:42 by zxcvbinz         ###   ########.fr       */
+/*   Updated: 2021/02/12 10:39:57 by dlanotte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 # define FT_PRINTF_H
 
 # include <unistd.h>
-# include <stdio.h>
 # include <stdarg.h>
 # include <stdlib.h>
 # include <stdbool.h>
@@ -36,6 +35,7 @@ typedef struct	s_param
 
 t_param			ft_check_params(t_param params, char *str, char type);
 t_param			ft_set_pa(t_param parameters, char *str, int i, char checked);
+int				*ft_fill(va_list *list, int *result, int t_asterisk);
 int				ft_find_numb(char *str, int i);
 int				ft_atoi(char *str);
 int				ft_printf(const char *str, ...);
@@ -53,9 +53,10 @@ int				ft_ii_p(int numb, char *ori_string, int i, int *aster);
 int				ft_p(va_list item, char *ori_string, int i, int *aster);
 int				ft_sp(char *str, char *ori_string, int i, int *asterisk);
 int				ft_hex_x(va_list item, char *ori_string, int i, int *aster);
-int				ft_hex_X(va_list item, char *ori_string, int i, int *aster);
+int				ft_hex_upper(va_list item, char *ori_string, int i, int *aster);
 int				ft_cp(char letter, char *ori_string, int i, int *asterisk);
 int				ft_up(unsigned int numb, char *ori_string, int i, int *asteri);
+int				ft_percent(char *str, char *ori_string, int i, int *aster);
 int				ft_c_par(const char *str, int i);
 int				t_precision(t_param params, char *str);
 int				ft_width(t_param params, char *str);

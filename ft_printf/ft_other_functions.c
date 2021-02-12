@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_other_functions.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zxcvbinz <zxcvbinz@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dlanotte <dlanotte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/02 19:08:59 by dlanotte          #+#    #+#             */
-/*   Updated: 2021/02/11 21:41:07 by zxcvbinz         ###   ########.fr       */
+/*   Updated: 2021/02/12 09:48:14 by dlanotte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,14 +62,18 @@ static bool		ft_zeros_check(char *str, int i, t_param params)
 
 	precision_check = false;
 	t_zeros = 0;
+	if (str[i] == '%' && params.type == '%')
+		i--;
 	while (str[--i] != '%')
 		if (ft_isdigit(str[i] && str[i - 1] == '.'))
 			precision_check = true;
-	while (str[i++] != params.type)
+	while (str[++i] != params.type)
+	{
 		if (str[i] == '0')
 			t_zeros++;
 		else if (str[i] == '.')
 			break ;
+	}
 	if (params.width > 0)
 		t_zeros -= ft_zeros_count(params.width);
 	if (params.precision && precision_check)
@@ -101,6 +105,7 @@ static t_param	ft_s_set_pa(t_param params, char *str, int i)
 			if (str[i + 1] != '*')
 				params.width = params.asterisk_value[counter++];
 	}
+	params.d_zero = false;
 	return (params);
 }
 
@@ -113,6 +118,8 @@ t_param			ft_set_pa(t_param parameters, char *str, int i, char checked)
 	parameters.zero = false;
 	parameters.type = checked;
 	parameters.width = ft_calc_width(str, i, parameters);
+	if (parameters.type == '%')
+		i--;
 	while (str[i++] && str[i] != checked)
 		if (str[i] == '.')
 		{
@@ -128,6 +135,5 @@ t_param			ft_set_pa(t_param parameters, char *str, int i, char checked)
 		else if (str[i] == '0' && !ft_isdigit(str[i - 1]))
 			parameters.zero = true;
 	parameters = ft_s_set_pa(parameters, str, i);
-	parameters.d_zero = false;
 	return (parameters);
 }

@@ -3,41 +3,39 @@
 /*                                                        :::      ::::::::   */
 /*   ft_last_functions.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zxcvbinz <zxcvbinz@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dlanotte <dlanotte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/10 19:59:27 by dlanotte          #+#    #+#             */
-/*   Updated: 2021/02/11 21:57:37 by zxcvbinz         ###   ########.fr       */
+/*   Updated: 2021/02/12 08:40:40 by dlanotte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-
-
-static char			*fill_str_xX(char *str, int j, int arr[16], int type)
+static char		*fill_str_upper(char *str, int j, int arr[16], int type)
 {
-	int k;
+	int							k;
 
 	k = 0;
 	while (j-- > 0)
-    {
-        if (arr[j] >= 0 && arr[j] <= 9)
-            str[k] = arr[j] + '0';
-        else if (arr[j] > 9)
+	{
+		if (arr[j] >= 0 && arr[j] <= 9)
+			str[k] = arr[j] + '0';
+		else if (arr[j] > 9)
 		{
 			if (type == 1)
-            	str[k] = arr[j] + 'a' - 10;
+				str[k] = arr[j] + 'a' - 10;
 			else if (type == 2)
 				str[k] = arr[j] + 'A' - 10;
 		}
-        k++;
-    }
+		k++;
+	}
 	return (str);
 }
 
-static char			*ft_s_ffpointer(char *str, long unsigned int i)
+static char		*ft_s_ffpointer(char *str, long unsigned int i)
 {
-	if (i == 0)	
+	if (i == 0)
 	{
 		if (!(str = malloc(sizeof(char) * 2)))
 			return (NULL);
@@ -50,26 +48,26 @@ static char			*ft_s_ffpointer(char *str, long unsigned int i)
 	return (str);
 }
 
-char            *ft_foundhexadec(unsigned int i, int type)
+char			*ft_foundhexadec(unsigned int i, int type)
 {
-    int j;
-    int k;
-    int arr[16];
-    char *str;
+	int						j;
+	int						k;
+	int						arr[16];
+	char					*str;
 
-    k = 0;
-    j = 0;
+	k = 0;
+	j = 0;
 	str = ft_s_ffpointer(str, i);
 	if (str[0] == 48 && str[1] == '\0')
 		return (str);
-    while (i > 0)
-    {
-        arr[j] = i % 16;
-        i = i / 16;
-        j++;
-    }
-	str = fill_str_xX(str, j, arr, type);
-    return (str);
+	while (i > 0)
+	{
+		arr[j] = i % 16;
+		i = i / 16;
+		j++;
+	}
+	str = fill_str_upper(str, j, arr, type);
+	return (str);
 }
 
 int				ft_hex_x(va_list item, char *ori_string, int i, int *aster)
@@ -99,7 +97,7 @@ int				ft_hex_x(va_list item, char *ori_string, int i, int *aster)
 	return (printed);
 }
 
-int				ft_hex_X(va_list item, char *ori_string, int i, int *aster)
+int				ft_hex_upper(va_list item, char *ori_string, int i, int *aster)
 {
 	char					*str;
 	int						printed;

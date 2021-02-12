@@ -1,3 +1,15 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: dlanotte <dlanotte@student.42.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2021/02/12 08:59:47 by dlanotte          #+#    #+#              #
+#    Updated: 2021/02/12 09:00:01 by dlanotte         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 # -*- Makefile -*-
 
 NAME = libftprintf.a
@@ -8,29 +20,20 @@ CFLAG = -Wall -Wextra -Werror
 .c.o : $(CC) $(CFLAG) -c $<
 
 SRCS = $(wildcard *.c)
-			
-BINSB := $(wildcard $(LIBFT)/*.o)
 
 BINS := $(SRCS:.c=.o)
 
 all: $(NAME)
 
-$(NAME) : $(BINS) $(BINSB)
-	ar rcs $(NAME) $(BINS) $(BINSB)
+$(NAME) : $(BINS)
+	ar rcs $(NAME) $(BINS)
 
 clean :
-	rm -f $(BINS) $(BINSB)
+	rm -f $(BINS)
 	
 fclean : clean
 	rm -f $(NAME)
 	
 re : fclean all
-
-comp :
-	$(CC) *.c
-	./a.out
-
-check :
-	norminette *.c
 
 .PHONY = all clean fclean re comp check

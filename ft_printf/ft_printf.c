@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zxcvbinz <zxcvbinz@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dlanotte <dlanotte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/11 18:19:54 by zxcvbinz          #+#    #+#             */
-/*   Updated: 2021/02/11 23:52:14 by zxcvbinz         ###   ########.fr       */
+/*   Updated: 2021/02/12 10:39:44 by dlanotte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,24 +19,24 @@ static int	ft_s_switcher(char *str, int i, va_list *var)
 
 	pr_c = 0;
 	ast = ft_check_asterisk(var, (char *)str, i);
-	if (str[ft_c_par(str, i)] == 'd')
+	if (ft_c_par(str, i) && str[ft_c_par(str, i)] == 'd')
 		pr_c = pr_c + ft_ip(va_arg(*var, int), (char *)str, i, ast);
-	else if (str[ft_c_par(str,i)] == 's')
+	else if (ft_c_par(str, i) && str[ft_c_par(str, i)] == 's')
 		pr_c = pr_c + ft_sp(va_arg(*var, char *), (char *)str, i, ast);
-	else if (str[ft_c_par(str,i)] == 'c')
+	else if (ft_c_par(str, i) && str[ft_c_par(str, i)] == 'c')
 		pr_c = pr_c + ft_cp(va_arg(*var, int), (char *)str, i, ast);
-	else if (str[ft_c_par(str,i)] == 'u')
+	else if (ft_c_par(str, i) && str[ft_c_par(str, i)] == 'u')
 		pr_c = pr_c + ft_up(va_arg(*var, unsigned int), (char *)str, i, ast);
-	else if (str[ft_c_par(str,i)] == 'i')
+	else if (ft_c_par(str, i) && str[ft_c_par(str, i)] == 'i')
 		pr_c = pr_c + ft_ii_p(va_arg(*var, int), (char *)str, i, ast);
-	else if (str[ft_c_par(str,i)] == 'p')
+	else if (ft_c_par(str, i) && str[ft_c_par(str, i)] == 'p')
 		pr_c = pr_c + ft_p(*var, (char *)str, i, ast);
-	else if (str[ft_c_par(str,i)] == 'x')
+	else if (ft_c_par(str, i) && str[ft_c_par(str, i)] == 'x')
 		pr_c = pr_c + ft_hex_x(*var, (char *)str, i, ast);
-	else if (str[ft_c_par(str,i)] == 'X')
-		pr_c = pr_c + ft_hex_X(*var, (char *)str, i, ast);
-	else if (ft_c_par(str, i) && str[ft_c_par(str,i)] == '%')
-		pr_c = pr_c + ft_sp("%", (char *)str, i, ast);
+	else if (ft_c_par(str, i) && str[ft_c_par(str, i)] == 'X')
+		pr_c = pr_c + ft_hex_upper(*var, (char *)str, i, ast);
+	else if (ft_c_par(str, i) && str[ft_c_par(str, i)] == '%')
+		pr_c = pr_c + ft_percent("%", (char *)str, i, ast);
 	free(ast);
 	return (pr_c);
 }
@@ -119,4 +119,3 @@ int			ft_skip_content(char *str, int i)
 		skip++;
 	return (skip);
 }
-

@@ -3,31 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_asterisk.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zxcvbinz <zxcvbinz@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dlanotte <dlanotte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/09 14:47:34 by dlanotte          #+#    #+#             */
-/*   Updated: 2021/02/11 21:57:15 by zxcvbinz         ###   ########.fr       */
+/*   Updated: 2021/02/12 08:38:22 by dlanotte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static int		*ft_fill(va_list *list, int *result, int t_asterisk)
-{
-	int							i;
-
-	i = 1;
-	if (!(result = malloc(sizeof(int) * (t_asterisk + 2))))
-		return ((int *)NULL);
-	while (i < (t_asterisk + 1))
-	{
-		result[i] = va_arg(*list, int);
-		i++;
-	}
-	return (result);
-}
-
-int				*ft_check_asterisk(va_list *list, char *str, int i)
+int					*ft_check_asterisk(va_list *list, char *str, int i)
 {
 	int							*result;
 	int							t_asterisk;
@@ -54,7 +39,7 @@ int				*ft_check_asterisk(va_list *list, char *str, int i)
 
 static char			*ft_s_ffpointer(char *str, long unsigned int i)
 {
-	if (i == 0)	
+	if (i == 0)
 	{
 		if (!(str = malloc(sizeof(char) * 2)))
 			return (NULL);
@@ -67,24 +52,8 @@ static char			*ft_s_ffpointer(char *str, long unsigned int i)
 	return (str);
 }
 
-static char			*ft_foundpointer(long unsigned int i)
+static char			*ft_ss_ffpointer(int j, int *arr, int k, char *str)
 {
-	int						j;
-	int						k;
-	int						arr[16];
-	char					*str;
-
-	k = 0;
-	j = 0;
-	str = ft_s_ffpointer(str, i);
-	if (str[0] == 48 && str[1] == '\0')
-		return (str);
-	while (i > 0)
-	{
-		arr[j] = i % 16;
-		i = i / 16;
-		j++;
-	}
 	while (j-- > 0)
 	{
 		if (arr[j] >= 0 && arr[j] <= 9)
@@ -97,12 +66,34 @@ static char			*ft_foundpointer(long unsigned int i)
 	return (str);
 }
 
-int				ft_p(va_list item, char *ori_string, int i, int *aster)
+static char			*ft_foundpointer(long unsigned int i)
 {
-	char					*str;
-	int						printed;
-	t_param					params;
-	long unsigned int		numb;
+	int							j;
+	int							k;
+	int							arr[16];
+	char						*str;
+
+	k = 0;
+	j = 0;
+	str = ft_s_ffpointer(str, i);
+	if (str[0] == 48 && str[1] == '\0')
+		return (str);
+	while (i > 0)
+	{
+		arr[j] = i % 16;
+		i = i / 16;
+		j++;
+	}
+	str = ft_ss_ffpointer(j, arr, k, str);
+	return (str);
+}
+
+int					ft_p(va_list item, char *ori_string, int i, int *aster)
+{
+	char						*str;
+	int							printed;
+	t_param						params;
+	long unsigned int			numb;
 
 	numb = va_arg(item, long unsigned int);
 	printed = 0;

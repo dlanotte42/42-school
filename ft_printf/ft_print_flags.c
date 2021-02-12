@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_print_flags.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zxcvbinz <zxcvbinz@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dlanotte <dlanotte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/11 18:51:55 by dlanotte          #+#    #+#             */
-/*   Updated: 2021/02/11 23:07:31 by zxcvbinz         ###   ########.fr       */
+/*   Updated: 2021/02/12 08:40:18 by dlanotte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ static int		ft_s_width(t_param params, int printed, char *str)
 	{
 		if (params.zero && params.type != 'd')
 			printed += ft_putchar('0');
-		else if (params.zero && params.type == 'd' && 
+		else if (params.zero && params.type == 'd' &&
 				!params.precision && !params.minus)
 			printed += ft_putchar('0');
 		else
