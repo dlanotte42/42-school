@@ -6,7 +6,7 @@
 /*   By: dlanotte <dlanotte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/23 17:41:46 by dlanotte          #+#    #+#             */
-/*   Updated: 2021/02/12 10:39:57 by dlanotte         ###   ########.fr       */
+/*   Updated: 2021/02/12 20:15:22 by dlanotte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ typedef struct	s_param
 	bool	minus;
 	bool	is_neg;
 	bool	d_zero;
+	bool	zeros_exe;
 	int		width;
 	int		precisions;
 	int		*asterisk_value;

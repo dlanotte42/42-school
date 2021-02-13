@@ -6,7 +6,7 @@
 /*   By: dlanotte <dlanotte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/12 08:29:33 by dlanotte          #+#    #+#             */
-/*   Updated: 2021/02/12 10:07:45 by dlanotte         ###   ########.fr       */
+/*   Updated: 2021/02/12 20:30:50 by dlanotte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,4 +50,32 @@ int			ft_percent(char *str, char *ori_string, int i, int *aster)
 	if (alloc)
 		free(str);
 	return (printed);
+}
+
+int			ft_find_numb(char *str, int i)
+{
+	int							len;
+	int							number;
+	char						*number_char;
+
+	len = 0;
+	while (ft_isdigit(str[i]))
+	{
+		len++;
+		i++;
+	}
+	if (!(number_char = malloc(sizeof(char) * (len + 1))))
+		return ((int)NULL);
+	i -= len;
+	len = 0;
+	while (ft_isdigit(str[i]))
+	{
+		number_char[len] = str[i];
+		i++;
+		len++;
+	}
+	number_char[len] = '\0';
+	number = ft_atoi(number_char);
+	free(number_char);
+	return (number);
 }

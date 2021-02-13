@@ -6,7 +6,7 @@
 /*   By: dlanotte <dlanotte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/23 18:18:03 by dlanotte          #+#    #+#             */
-/*   Updated: 2021/02/12 08:39:13 by dlanotte         ###   ########.fr       */
+/*   Updated: 2021/02/13 14:46:54 by dlanotte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,6 @@ char		ft_is_flag(char c)
 
 int			ft_c_par(const char *str, int i)
 {
-	char	parameter;
 
 	while (str[i++])
 	{
