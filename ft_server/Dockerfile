@@ -6,7 +6,7 @@
 #    By: dlanotte <dlanotte@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/13 15:29:40 by dlanotte          #+#    #+#              #
-#    Updated: 2021/02/13 17:06:50 by dlanotte         ###   ########.fr        #
+#    Updated: 2021/02/15 16:11:36 by dlanotte         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,4 +18,3 @@ COPY ./srcs/nginx-conf ./tmp/nginx-conf
 COPY ./srcs/phpmyadmin.inc.php ./tmp/phpmyadmin.inc.php
 COPY ./srcs/wp-config.php ./tmp/wp-config.php
 
-CMD bash init_container.sh
