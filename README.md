@@ -13,25 +13,24 @@ git clone https://github.com/zxcvbinz/42cursus.git
 
 ## Result
 ### ft_libft 
-    ✅ Normal: 100/100 
-    ❌ Bonus: 0/15 
+[![jaeskim's 42Project Score](https://badge42.herokuapp.com/api/project/dlanotte/Libft)](https://github.com/JaeSeoKim/badge42)
 
 ### get_next_line
-    ✅ Normal: 100/100 
-    ❌ Bonus: 0/15 
+[![jaeskim's 42Project Score](https://badge42.herokuapp.com/api/project/dlanotte/get_next_line)](https://github.com/JaeSeoKim/badge42)
 
 ### netwhat
-    ✅ Normal: 100/100 
+[![jaeskim's 42Project Score](https://badge42.herokuapp.com/api/project/dlanotte/netwhat)](https://github.com/JaeSeoKim/badge42)
 
 ### ft_printf
-    ✅ Normal: 100/100 
-    ❌ Bonus: 0/15 
+[![jaeskim's 42Project Score](https://badge42.herokuapp.com/api/project/dlanotte/ft_printf)](https://github.com/JaeSeoKim/badge42)
 
 ### ft_server
-    ✅ Normal: 100/100 
+[![jaeskim's 42Project Score](https://badge42.herokuapp.com/api/project/dlanotte/ft_server)](https://github.com/JaeSeoKim/badge42)
+### exam-rank-02
+[![jaeskim's 42Project Score](https://badge42.herokuapp.com/api/project/dlanotte/ft_server)](https://github.com/JaeSeoKim/badge42)
 
 ### cub3D
-    Working.....
+[![jaeskim's 42Project Score](https://badge42.herokuapp.com/api/project/dlanotte/cub3d)](https://github.com/JaeSeoKim/badge42)
 
 [![forthebadge](https://forthebadge.com/images/badges/made-with-c.svg)](https://forthebadge.com) 
 [![forthebadge](https://forthebadge.com/images/badges/built-with-love.svg)](https://forthebadge.com)\
