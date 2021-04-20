@@ -33,10 +33,10 @@ git clone https://github.com/zxcvbinz/42cursus.git
 [![jaeskim's 42Project Score](https://badge42.herokuapp.com/api/project/dlanotte/cub3d)](https://github.com/JaeSeoKim/badge42)
 
 ### libasm
-Coming Soon....
+[![jaeskim's 42Project Score](https://badge42.herokuapp.com/api/project/dlanotte/libasm)](https://github.com/JaeSeoKim/badge42)
 
 ### ft_services
-Coming Soon....
+[![jaeskim's 42Project Score](https://badge42.herokuapp.com/api/project/dlanotte/ft_services)](https://github.com/JaeSeoKim/badge42)
 
 [![forthebadge](https://forthebadge.com/images/badges/made-with-c.svg)](https://forthebadge.com) 
 [![forthebadge](https://forthebadge.com/images/badges/built-with-love.svg)](https://forthebadge.com)\
