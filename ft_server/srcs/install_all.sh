@@ -5,7 +5,7 @@ if [ "$1" == "init" ]; then
 	mkdir /var/www/ninja_flex && touch /var/www/ninja_flex/index_giordi.php
 	echo "<?php echo 'Giordano 107<br>'; phpinfo(); ?>" >> /var/www/ninja_flex/index_giordi.php
 	mkdir /etc/nginx/ssl
-	openssl req -newkey rsa:4096 -x509 -sha256 -days 365 -nodes -out /etc/nginx/ssl/ninja_flex.pem -keyout /etc/nginx/ssl/ninja_flex.key -subj "/C=FR/ST=Paris/L=Paris/O=42 School/OU=rchallie/CN=ninja_flex"
+	openssl req -newkey rsa:4096 -x509 -sha256 -days 365 -nodes -out /etc/nginx/ssl/ninja_flex.pem -keyout /etc/nginx/ssl/ninja_flex.key -subj "/C=IT/ST=Italy/L=Roma/O=42Roma/OU=dlanotte/CN=ninja_flex"
 	ln -s /etc/nginx/sites-available/ninja_flex /etc/nginx/sites-enabled/ninja_flex
 	rm -rf /etc/nginx/sites-enabled/default
 	echo "CREATE DATABASE wordpress;" | mysql -u root --skip-password
