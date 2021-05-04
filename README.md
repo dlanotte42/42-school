@@ -38,6 +38,12 @@ git clone https://github.com/zxcvbinz/42cursus.git
 ### ft_services
 [![jaeskim's 42Project Score](https://badge42.herokuapp.com/api/project/dlanotte/ft_services)](https://github.com/JaeSeoKim/badge42)
 
+### push_swap
+[![jaeskim's 42Project Score](https://badge42.herokuapp.com/api/project/dlanotte/push_swap)](https://github.com/JaeSeoKim/badge42)
+
+### minishell
+[![jaeskim's 42Project Score](https://badge42.herokuapp.com/api/project/dlanotte/minishell)](https://github.com/JaeSeoKim/badge42)
+
 [![forthebadge](https://forthebadge.com/images/badges/made-with-c.svg)](https://forthebadge.com) 
 [![forthebadge](https://forthebadge.com/images/badges/built-with-love.svg)](https://forthebadge.com)\
 [![forthebadge](https://forthebadge.com/images/badges/it-works-why.svg)](https://forthebadge.com)
