@@ -1,21 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   settings.h                                         :+:      :+:    :+:   */
+/*   movement.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dlanotte <dlanotte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/24 23:43:58 by zxcvbinz          #+#    #+#             */
-/*   Updated: 2021/03/25 20:44:21 by dlanotte         ###   ########.fr       */
+/*   Created: 2021/03/22 16:58:08 by dlanotte          #+#    #+#             */
+/*   Updated: 2021/04/03 18:10:46 by dlanotte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SETTINGS_H
-# define SETTINGS_H
+#ifndef MOVEMENT_H
+# define MOVEMENT_H
 
 # include "cub3d.h"
 
-void		ft_set_parameters(t_game *game);
-t_game		*ft_raycast_set_block(t_game *game);
+int				onPressButton(int keycode, t_game *game);
+int				onReleseButton(int keycode, t_game *game);
+void			ft_move(t_game *game, int **map);
 
 #endif

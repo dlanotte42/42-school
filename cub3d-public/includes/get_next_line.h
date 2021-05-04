@@ -1,26 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.h                                            :+:      :+:    :+:   */
+/*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zxcvbinz <zxcvbinz@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dlanotte <dlanotte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/16 16:17:36 by dlanotte          #+#    #+#             */
-/*   Updated: 2021/03/24 23:44:49 by zxcvbinz         ###   ########.fr       */
+/*   Created: 2021/01/21 18:14:49 by dlanotte          #+#    #+#             */
+/*   Updated: 2021/04/02 18:01:24 by dlanotte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB3D_H
-# define CUB3D_H
+#ifndef GET_NEXT_LINE_H
+# define GET_NEXT_LINE_H
 
 # include <stdlib.h>
-# include <stdio.h>
-# include <math.h>
 # include <unistd.h>
-# include "../mlx/mlx.h"
-# include "struct.h"
-# include "engine.h"
-# include "movement.h"
-# include "settings.h"
+
+int					get_next_line(int fd, char **line);
+int					ft_return(char *str);
+size_t				ft_strlen(const char *s);
+char				*join_str(const char *s1, const char *s2);
 
 #endif
